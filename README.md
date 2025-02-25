@@ -1,92 +1,93 @@
-Guau & Miau
+🐾 Guau & Miau 🐾
 
-Descripción del Proyecto
+
+
+📌 Descripción del Proyecto
 
 Guau & Miau es una plataforma diseñada para facilitar la adopción de mascotas y fomentar la colaboración con refugios de animales. La aplicación permite a los adoptantes buscar mascotas, enviar solicitudes de adopción y conocer más sobre los refugios. A su vez, los refugios pueden registrar y gestionar las adopciones de sus animales.
 
-Tecnologías Utilizadas
+🛠️ Tecnologías Utilizadas
 
-Backend: Django, Python
+Backend
 
-Frontend: React
+Frontend
 
-Diseño UI/UX: Figma
+UI/UX
 
-Gestor de Tareas: Jira
+Tareas
 
-Testing y API: Postman
+Testing
 
-Otras Herramientas: TIMLIT, ATTSRTHAT
+Otras Herramientas
 
-Funcionalidades Clave
+Django, Python
 
-Para Adoptantes
+React
 
-1. Menú de Navegación Intuitivo
+Figma
 
-Secciones: "Adoptar", "Colaborar", "Quiénes Somos", "Dónde Estamos".
+Jira
 
-Compatible con dispositivos móviles y escritorio.
+Postman
 
-Incluye un mapa interactivo con la ubicación de los refugios.
+TIMLIT, ATTSRTHAT
 
-2. Búsqueda de Mascotas con Filtros
+🌟 Funcionalidades Clave
 
-Filtros disponibles: especie, raza, edad, tamaño, ubicación.
+👨‍👩‍👧‍👦 Para Adoptantes
 
-Cada mascota en los resultados muestra nombre, foto y descripción breve.
+🏠 1. Menú de Navegación Intuitivo
 
-3. Visualización del Perfil de una Mascota
+✅ Secciones: "Adoptar", "Colaborar", "Quiénes Somos", "Dónde Estamos".
+✅ Compatible con dispositivos móviles y escritorio.
+✅ Incluye un mapa interactivo con la ubicación de los refugios.
 
-Información detallada: fotos, descripción, edad, estado de salud, refugio responsable.
+🔍 2. Búsqueda de Mascotas con Filtros
 
-Botón para iniciar solicitud de adopción.
+🎯 Filtros disponibles: especie, raza, edad, tamaño, ubicación.
+🎯 Cada mascota muestra nombre, foto y descripción breve.
 
-4. Envío de Solicitud de Adopción
+📖 3. Visualización del Perfil de una Mascota
 
-Formulario con datos personales, motivo de adopción y experiencia con mascotas (opcional).
+🐶 Información detallada: fotos, descripción, edad, estado de salud, refugio responsable.
+🐶 Botón para iniciar solicitud de adopción.
 
-Confirmación por pantalla y correo electrónico.
+📝 4. Envío de Solicitud de Adopción
 
-Notificación automática al refugio correspondiente.
+📌 Formulario con datos personales, motivo de adopción y experiencia con mascotas (opcional).
+📌 Confirmación por pantalla y correo electrónico.
+📌 Notificación automática al refugio correspondiente.
 
-Para Refugios de Animales
+🏡 Para Refugios de Animales
 
-5. Registro y Login de Refugios
+🔐 5. Registro y Login de Refugios
 
-Formulario de registro con validación de email único y confirmación.
+🔹 Formulario de registro con validación de email único y confirmación.
+🔹 Inicio de sesión con email y contraseña.
 
-Inicio de sesión con email y contraseña.
+📂 6. Gestión de Mascotas
 
-6. Gestión de Mascotas
+🔸 Registro de nuevas mascotas con fotos, descripción, salud y ubicación.
+🔸 Edición y actualización de información de mascotas.
+🔸 Eliminación de mascotas con confirmación previa.
 
-Registro de nuevas mascotas con fotos, descripción, salud y ubicación.
+📋 7. Gestión de Solicitudes de Adopción
 
-Edición y actualización de información de mascotas.
+📌 Panel de control exclusivo para refugios.
+📌 Listado de solicitudes con datos del adoptante.
+📌 Opciones para aprobar o rechazar solicitudes.
 
-Eliminación de mascotas con confirmación previa.
+🔧 Para Administradores
 
-7. Gestión de Solicitudes de Adopción
+⚙️ 8. Gestión de Usuarios
 
-Panel de control exclusivo para refugios.
+🛡️ Sección administrativa con lista de cuentas de adoptantes y refugios.
+🛡️ Posibilidad de activar, desactivar o eliminar cuentas.
+🛡️ Restricción de acceso a cuentas desactivadas.
 
-Listado de solicitudes con datos del adoptante.
+🚀 Instalación y Configuración
 
-Opciones para aprobar o rechazar solicitudes.
-
-Para Administradores
-
-8. Gestión de Usuarios
-
-Sección administrativa con lista de cuentas de adoptantes y refugios.
-
-Posibilidad de activar, desactivar o eliminar cuentas.
-
-Restricción de acceso a cuentas desactivadas.
-
-Instalación y Configuración
-
-Requisitos Previos
+📌 Requisitos Previos
 
 Python 3.x
 
@@ -96,37 +97,28 @@ Node.js y npm
 
 React
 
-Pasos para Ejecutar el Proyecto
+⚡ Pasos para Ejecutar el Proyecto
 
-Clonar el repositorio:
-
+# Clonar el repositorio
 git clone https://github.com/tu-repo/guau-miau.git
 
-Navegar al directorio del backend e instalar dependencias:
-
+# Backend
 cd backend
 pip install -r requirements.txt
-
-Ejecutar el servidor de Django:
-
 python manage.py runserver
 
-Navegar al directorio del frontend e instalar dependencias:
-
+# Frontend
 cd frontend
 npm install
-
-Ejecutar el servidor de React:
-
 npm start
 
-Acceder a la plataforma en http://localhost:3000.
+📌 Acceder a la plataforma en http://localhost:3000.
 
-Contribuir
+🤝 Contribuir
 
-Las contribuciones son bienvenidas. Si deseas colaborar, abre un issue o envía un pull request con mejoras y correcciones.
+🎯 Las contribuciones son bienvenidas. Si deseas colaborar, abre un issue o envía un pull request con mejoras y correcciones.
 
-Licencia
+📜 Licencia
 
 Este proyecto está bajo la licencia MIT.
 
