@@ -1,67 +1,159 @@
-# PET ADOPTION <!-- Once we have defined the name it will be changed. -->
-#### English
-## DESCRIPTION
+Guau & Miau
+
+Descripción del Proyecto
+
+Guau & Miau es una plataforma diseñada para facilitar la adopción de mascotas y fomentar la colaboración con refugios de animales. La aplicación permite a los adoptantes buscar mascotas, enviar solicitudes de adopción y conocer más sobre los refugios. A su vez, los refugios pueden registrar y gestionar las adopciones de sus animales.
+
+Tecnologías Utilizadas
+
+Backend: Django, Python
+
+Frontend: React
+
+Diseño UI/UX: Figma
+
+Gestor de Tareas: Jira
+
+Testing y API: Postman
+
+Otras Herramientas: TIMLIT, ATTSRTHAT
+
+Funcionalidades Clave
+
+Para Adoptantes
+
+1. Menú de Navegación Intuitivo
+
+Secciones: "Adoptar", "Colaborar", "Quiénes Somos", "Dónde Estamos".
+
+Compatible con dispositivos móviles y escritorio.
+
+Incluye un mapa interactivo con la ubicación de los refugios.
+
+2. Búsqueda de Mascotas con Filtros
+
+Filtros disponibles: especie, raza, edad, tamaño, ubicación.
+
+Cada mascota en los resultados muestra nombre, foto y descripción breve.
+
+3. Visualización del Perfil de una Mascota
+
+Información detallada: fotos, descripción, edad, estado de salud, refugio responsable.
+
+Botón para iniciar solicitud de adopción.
+
+4. Envío de Solicitud de Adopción
+
+Formulario con datos personales, motivo de adopción y experiencia con mascotas (opcional).
+
+Confirmación por pantalla y correo electrónico.
+
+Notificación automática al refugio correspondiente.
+
+Para Refugios de Animales
+
+5. Registro y Login de Refugios
+
+Formulario de registro con validación de email único y confirmación.
+
+Inicio de sesión con email y contraseña.
+
+6. Gestión de Mascotas
+
+Registro de nuevas mascotas con fotos, descripción, salud y ubicación.
+
+Edición y actualización de información de mascotas.
+
+Eliminación de mascotas con confirmación previa.
+
+7. Gestión de Solicitudes de Adopción
+
+Panel de control exclusivo para refugios.
+
+Listado de solicitudes con datos del adoptante.
+
+Opciones para aprobar o rechazar solicitudes.
+
+Para Administradores
+
+8. Gestión de Usuarios
+
+Sección administrativa con lista de cuentas de adoptantes y refugios.
+
+Posibilidad de activar, desactivar o eliminar cuentas.
+
+Restricción de acceso a cuentas desactivadas.
+
+Instalación y Configuración
+
+Requisitos Previos
+
+Python 3.x
+
+Django
+
+Node.js y npm
+
+React
+
+Pasos para Ejecutar el Proyecto
+
+Clonar el repositorio:
+
+git clone https://github.com/tu-repo/guau-miau.git
+
+Navegar al directorio del backend e instalar dependencias:
+
+cd backend
+pip install -r requirements.txt
+
+Ejecutar el servidor de Django:
+
+python manage.py runserver
+
+Navegar al directorio del frontend e instalar dependencias:
+
+cd frontend
+npm install
+
+Ejecutar el servidor de React:
+
+npm start
+
+Acceder a la plataforma en http://localhost:3000.
+
+Contribuir
+
+Las contribuciones son bienvenidas. Si deseas colaborar, abre un issue o envía un pull request con mejoras y correcciones.
+
+Licencia
+
+Este proyecto está bajo la licencia MIT.
+
+
 ## TEAM
-Samanta Ramos Podadera - **QA**
-- GitHub [@SamantaRamosPodadera][SRPGitHub]
-- Linked In [@SamantaRamosPodadera][SRPLinkedIn]
-
-Emilio Villalba - **Backend**
-- GitHub [@vianconi][EVGitHub]
-- Linked In [@EmilioVillalba][EVLinkedIn]
-
 Nahuel Marcilli - **Backend**
 - GitHub [@marili-mn][NMGitHub]
 - Linked In [@NahuelMarcilli][NMLinkedIn]
+
+Jose - **Frontend**
+- GitHub [][]
+- Linked In [][]
+
+Camila - **Frontend**
+- GitHub [][]
+- Linked In [][]
 
 Florenca Mauna - **UI/UX**
 - GitHub [@FlorMauna][FMGitHub]
 - Linked In [@FlorenciaMauna][FMLinkedIn]
 
-Raúl Sánchez Cárdenas - **Frontend**
-- GitHub [@RAULSANCAR][RSCGitHub]
-- Linked In [@RAULSANCAR][RSCLinkedin]
-
-## TECH STACK
-- **Client:** 
-- **Server:** 
-
-#### Spanish
-## DESCRIPCIÓN
-## EQUIPO
 Samanta Ramos Podadera - **QA**
 - GitHub [@SamantaRamosPodadera][SRPGitHub]
 - Linked In [@SamantaRamosPodadera][SRPLinkedIn]
 
-Emilio Villalba - **Backend**
-- GitHub [@vianconi][EVGitHub]
-- Linked In [@EmilioVillalba][EVLinkedIn]
 
-Nahuel Marcilli - **Backend**
-- GitHub [@marili-mn][NMGitHub]
-- Linked In [@NahuelMarcilli][NMLinkedIn]
 
-Florenca Mauna - **UI/UX**
-- GitHub [@FlorMauna][FMGitHub]
-- Linked In [@FlorenciaMauna][FMLinkedIn]
 
-Raúl Sánchez Cárdenas - **Frontend**
-- GitHub [@RAULSANCAR][RSCGitHub]
-- Linked In [@RAULSANCAR][RSCLinkedin]
 
-## TECNOLOGÍAS
-- **Cliente:** 
-- **Servidor:** 
-
-<!-- Reference -->
-[SRPGitHub]: https://github.com/SamantaRamosPodadera
-[SRPLinkedIn]: https://www.linkedin.com/in/samantaramospodadera/
-[EVGitHub]: https://github.com/vianconi
-[EVLinkedIn]: https://www.linkedin.com/in/emiliovillalba/
-[NMGitHub]: https://github.com/marili-mn
-[NMLinkedIn]: https://www.linkedin.com/in/nahuel-marcilli/
-[FMGitHub]: https://github.com/FlorMauna
-[FMLinkedIn]: https://www.linkedin.com/in/florencia-mauna-user-experience-designer/
-[RSCGitHub]: https://www.github.com/RAULSANCAR
-[RSCLinkedin]: https://www.linkedin.com/in/raulsancar
 
