@@ -100,7 +100,7 @@ React
 ⚡ Pasos para Ejecutar el Proyecto
 
 # Clonar el repositorio
-git clone https://github.com/tu-repo/guau-miau.git
+https://github.com/No-Country-simulation/c24-22-m-webapp.git
 
 # Backend
 cd backend
