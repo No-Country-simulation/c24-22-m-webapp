@@ -26,13 +26,10 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
+### 4. Inyectar datos ficticios para pruebas
 
-### 4. Configurar variables de entorno
-Crear un archivo `.env` y agregar:
-```env
-SECRET_KEY=<tu_clave_secreta>
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3  # Cambiar a PostgreSQL o MySQL en producción
+```
+sqlite3 db.sqlite3 ".read data.sql"
 ```
 
 ### 5. Aplicar migraciones y correr el servidor
