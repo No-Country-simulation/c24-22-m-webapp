@@ -20,6 +20,7 @@ cd guau_miau
 ```bash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
+o puedes usar .\venv\Scripts\activate
 ```
 
 ### 3. Instalar dependencias
