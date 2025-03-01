@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ### 4. Inyectar datos ficticios para pruebas
 
 ```
-sqlite3 db.sqlite3 ".read data.sql"
+sqlite3 db.sqlite3 ".read fictionalData.sql"
 ```
 
 ### 5. Aplicar migraciones y correr el servidor
