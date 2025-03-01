@@ -13,7 +13,7 @@ Guau and Miau es una API RESTful desarrollada en Django con Django REST Framewor
 ### 1. Clonar el repositorio
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd guau_miau
+cd backend
 ```
 
 ### 2. Crear y activar un entorno virtual
