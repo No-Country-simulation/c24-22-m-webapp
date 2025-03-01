@@ -27,16 +27,21 @@ o puedes usar .\venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
-### 4. Inyectar datos ficticios para pruebas
+### 4.Aplicar migraciones
 
 ```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 5. Inyectar datos ficticios para pruebas
+```bash
 sqlite3 db.sqlite3 ".read fictionalData.sql"
 ```
 
-### 5. Aplicar migraciones y correr el servidor
-```bash
-python manage.py makemigrations
-python manage.py migrate
+### 6. Ejecutar el servidor
+
+```
 python manage.py runserver
 ```
 
