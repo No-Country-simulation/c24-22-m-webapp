@@ -59,10 +59,10 @@ jobs:
           source venv/bin/activate
           nohup python manage.py runserver 0.0.0.0:8000 &  # Iniciar Django en segundo plano
           
-          # Verificar si el servidor Django está corriendo en el puerto 8000
+          # Verificar si el servidor Django está corriendo usando curl
           sleep 10  # Esperar para asegurar que el servidor inicie
-          if ! lsof -i :8000; then
-            echo "Django server is not running!"  # Si no se está ejecutando, fallar el flujo
+          if ! curl --silent --head --fail http://127.0.0.1:8000/; then
+            echo "Django server is not running!"  # Si no responde, fallar el flujo
             exit 1
           fi
 
@@ -71,4 +71,5 @@ jobs:
           sleep 10  # Esperar para que ngrok establezca la conexión
           URL=$(tail -n 10 ngrok.log | grep -o 'https://[a-z0-9]*\.ngrok.io')  # Obtener la URL
           echo "API URL: $URL"
+
 
