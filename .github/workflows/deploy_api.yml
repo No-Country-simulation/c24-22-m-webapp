@@ -49,8 +49,7 @@ jobs:
         run: |
           cd backend
           source venv/bin/activate
-          nohup python manage.py runserver 0.0.0.0:8000 & sleep 60 &
-          lt --port 8000 > url.txt &
-          sleep 60
-          echo "API URL: $(cat url.txt)"
-
+          nohup python manage.py runserver 0.0.0.0:8000 & 
+          sleep 60  # Aumentar el tiempo de espera
+          URL=$(lt --port 8000 --print-urls | grep -o 'https://[a-z0-9]*\.loca.lt')  # Filtrar la URL
+          echo "API URL: $URL"
