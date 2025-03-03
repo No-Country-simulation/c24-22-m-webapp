@@ -1,0 +1,58 @@
+name: Deploy API
+
+on:
+  push:
+    branches:
+      - backend
+  pull_request:
+    branches:
+      - backend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Apply migrations
+        run: |
+          cd backend
+          source venv/bin/activate
+          python manage.py makemigrations
+          python manage.py migrate
+
+      - name: Load test data
+        run: |
+          cd backend
+          source venv/bin/activate
+          sqlite3 db.sqlite3 ".read fictionalData.sql"
+
+      - name: Install ngrok
+        run: |
+          curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+          echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+          sudo apt update && sudo apt install ngrok
+
+      - name: Expose API with ngrok
+        run: |
+          cd backend
+          source venv/bin/activate
+          nohup python manage.py runserver 0.0.0.0:8000 &
+          ngrok http 8000 > /dev/null &
+          sleep 5
+          curl --silent http://127.0.0.1:4040/api/tunnels | jq -r '.tunnels[0].public_url'
