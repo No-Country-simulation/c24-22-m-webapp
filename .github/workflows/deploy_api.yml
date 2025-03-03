@@ -49,8 +49,8 @@ jobs:
         run: |
           cd backend
           source venv/bin/activate
-          nohup python manage.py runserver 0.0.0.0:8000 &
+          nohup python manage.py runserver 0.0.0.0:8000 & sleep 15 &
           lt --port 8000 > url.txt &
-          sleep 5
+          sleep 15
           echo "API URL: $(cat url.txt)"
 
