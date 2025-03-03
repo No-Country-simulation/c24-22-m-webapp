@@ -52,5 +52,5 @@ jobs:
           nohup python manage.py runserver 0.0.0.0:8000 &
           lt --port 8000 > url.txt &
           sleep 5
-          cat url.txt
+          echo "API URL: $(cat url.txt)"
 
