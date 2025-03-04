@@ -140,7 +140,7 @@ Florenca Mauna - **UI/UX**
 - GitHub [@FlorMauna][FMGitHub]
 - Linked In [@FlorenciaMauna][FMLinkedIn]
 
-Samanta Ramos Podadera - **QA**
+Samanta Ramos Podadera - **QA** 
 - GitHub [@SamantaRamosPodadera][SRPGitHub]
 - Linked In [@SamantaRamosPodadera][SRPLinkedIn]
 
