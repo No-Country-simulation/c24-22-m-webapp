@@ -1,52 +1,60 @@
 name: Deploy to Vercel
 
-# Define los eventos que disparan el flujo de trabajo
 on:
   push:
     branches:
-      - backend  # Se ejecuta automáticamente cuando haces push a la rama 'backend'
-  workflow_dispatch:  # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
+      - backend
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Clonar el repositorio
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      # Paso 2: Cambiar al directorio backend
       - name: Change to backend directory
         run: cd backend
 
-      # Paso 3: Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.10'  # Asegúrate de usar la versión correcta de Python
+          python-version: '3.10'
 
-      # Paso 4: Instalar dependencias
       - name: Install dependencies
         run: |
-          cd backend  # Asegurarse de estar en el directorio correcto
+          cd backend
           python -m venv venv
           . venv/bin/activate  # En Windows: .\venv\Scripts\activate
           pip install -r requirements.txt
 
-      # Paso 5: Aplicar migraciones
+      - name: Set Django environment to test
+        run: echo "DJANGO_ENV=test" >> $GITHUB_ENV  # Establece la variable de entorno para el entorno de pruebas
+
       - name: Apply migrations
         run: |
-          cd backend  # Asegurarse de estar en el directorio correcto
-          . venv/bin/activate  # En Windows: .\venv\Scripts\activate
+          cd backend
+          . venv/bin/activate
           python manage.py makemigrations
           python manage.py migrate
 
-      # Paso 6: Desplegar a Vercel
+      - name: Inyectar datos ficticios para pruebas
+        run: |
+          cd backend
+          . venv/bin/activate
+          sqlite3 db.sqlite3 ".read fictionalData.sql"  # Ejecutar el script SQL para insertar datos ficticios
+
+      - name: Ejecutar el servidor Django (opcional, solo para verificar que está funcionando)
+        run: |
+          cd backend
+          . venv/bin/activate
+          python manage.py runserver &  # Ejecutar el servidor en segundo plano (aunque no es necesario para Vercel)
+
       - name: Deploy to Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Asegúrate de configurar el token de Vercel en GitHub Secrets
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          cd backend  # Asegurarse de estar en el directorio correcto
+          cd backend
           npm install -g vercel
-          vercel --prod --token $VERCEL_TOKEN --yes  # Agregar --yes para evitar la confirmación manual
+          vercel --prod --token $VERCEL_TOKEN --yes
