@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'guau_miau.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'guau_miau_db',  # Nombre de la base de datos
+        'USER': 'postgres',  # Reemplaza con tu usuario de PostgreSQL
+        'PASSWORD': 'admin',  # Reemplaza con tu contraseña
+        'HOST': 'localhost',  # O la IP del servidor de PostgreSQL
+        'PORT': '5432',  # Puerto de PostgreSQL
     }
 }
 

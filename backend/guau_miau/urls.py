@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+
+# Vista para la URL "/"
+def health_check(request):
+    return JsonResponse({"message": "Guau and Miau API está corriendo correctamente 🚀"})
 
 urlpatterns = [
+    path('', health_check),  # Modificación aquí
     path('admin/', admin.site.urls),
     path('api/', include('guau_miau_app.urls')),
 ]
