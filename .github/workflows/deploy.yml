@@ -1,0 +1,27 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cuando haces push a la rama main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (Vercel needs Node.js to deploy)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Usa la versión de Node.js que necesites
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Vercel Token en GitHub Secrets
+        run: vercel --token $VERCEL_TOKEN --prod  # Desplegar en producción
