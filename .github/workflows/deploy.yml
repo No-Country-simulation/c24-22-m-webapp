@@ -5,7 +5,7 @@ on:
   # Se ejecuta automáticamente cuando haces push a la rama 'backed'
   push:
     branches:
-      - backend
+      - backed
 
   # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
   workflow_dispatch:
@@ -15,30 +15,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Paso 1: Clonar el repositorio
       - name: Checkout the repository
         uses: actions/checkout@v3
 
+      # Paso 2: Cambiar al directorio backend
+      - name: Change to backend directory
+        run: cd backend
+
+      # Paso 3: Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.9'  # Asegúrate de usar la versión correcta de Python
 
+      # Paso 4: Instalar dependencias
       - name: Install dependencies
         run: |
+          cd backend  # Asegurarse de estar en el directorio correcto
           python -m venv venv
           . venv/bin/activate  # En Windows: .\venv\Scripts\activate
           pip install -r requirements.txt
 
+      # Paso 5: Aplicar migraciones
       - name: Apply migrations
         run: |
+          cd backend  # Asegurarse de estar en el directorio correcto
           . venv/bin/activate  # En Windows: .\venv\Scripts\activate
           python manage.py makemigrations
           python manage.py migrate
 
+      # Paso 6: Desplegar a Vercel
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Asegúrate de configurar el token de Vercel en GitHub Secrets
         run: |
+          cd backend  # Asegurarse de estar en el directorio correcto
           npm install -g vercel
           vercel --prod --token $VERCEL_TOKEN
 
