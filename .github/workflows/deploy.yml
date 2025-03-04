@@ -5,7 +5,7 @@ on:
   # Se ejecuta automáticamente cuando haces push a la rama 'backed'
   push:
     branches:
-      - backed
+      - backend
 
   # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
   workflow_dispatch:
