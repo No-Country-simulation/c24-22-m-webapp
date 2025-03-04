@@ -1,27 +1,44 @@
 name: Deploy to Vercel
 
+# Define los eventos que disparan el flujo de trabajo
 on:
+  # Se ejecuta automáticamente cuando haces push a la rama 'backed'
   push:
     branches:
-      - main  # Se ejecuta cuando haces push a la rama main
+      - backend
+
+  # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code
+      - name: Checkout the repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (Vercel needs Node.js to deploy)
-        uses: actions/setup-node@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
         with:
-          node-version: '16'  # Usa la versión de Node.js que necesites
+          python-version: '3.9'  # Asegúrate de usar la versión correcta de Python
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          . venv/bin/activate  # En Windows: .\venv\Scripts\activate
+          pip install -r requirements.txt
+
+      - name: Apply migrations
+        run: |
+          . venv/bin/activate  # En Windows: .\venv\Scripts\activate
+          python manage.py makemigrations
+          python manage.py migrate
 
       - name: Deploy to Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Vercel Token en GitHub Secrets
-        run: vercel --token $VERCEL_TOKEN --prod  # Desplegar en producción
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Asegúrate de configurar el token de Vercel en GitHub Secrets
+        run: |
+          npm install -g vercel
+          vercel --prod --token $VERCEL_TOKEN
+
