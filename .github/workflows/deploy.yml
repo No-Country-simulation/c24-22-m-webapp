@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.9'  # Asegúrate de usar la versión correcta de Python
+          python-version: '3.10'  # Asegúrate de usar la versión correcta de Python
 
       # Paso 4: Instalar dependencias
       - name: Install dependencies
