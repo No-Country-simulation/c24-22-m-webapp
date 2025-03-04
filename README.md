@@ -1,6 +1,6 @@
 # Guau and Miau - API de Adopción de Mascotas
 
-## Descripción
+## Descripción 
 Guau and Miau es una API RESTful desarrollada en Django con Django REST Framework (DRF) para gestionar la adopción de mascotas. Permite la gestión de adoptantes, refugios, mascotas, solicitudes de adopción y colaboraciones con refugios.
 
 ## Tecnologías Utilizadas
