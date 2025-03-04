@@ -2,13 +2,10 @@ name: Deploy to Vercel
 
 # Define los eventos que disparan el flujo de trabajo
 on:
-  # Se ejecuta automáticamente cuando haces push a la rama 'backed'
   push:
     branches:
-      - backend
-
-  # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
-  workflow_dispatch:
+      - backend  # Se ejecuta automáticamente cuando haces push a la rama 'backend'
+  workflow_dispatch:  # Se ejecuta manualmente cuando lo desees desde la interfaz de GitHub Actions
 
 jobs:
   deploy:
@@ -52,5 +49,4 @@ jobs:
         run: |
           cd backend  # Asegurarse de estar en el directorio correcto
           npm install -g vercel
-          vercel --prod --token $VERCEL_TOKEN
-
+          vercel --prod --token $VERCEL_TOKEN --yes  # Agregar --yes para evitar la confirmación manual
