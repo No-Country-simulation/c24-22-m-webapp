@@ -7,7 +7,7 @@ Guau and Miau es una API RESTful desarrollada en Django con Django REST Framewor
 - Python 3.x
 - Django 5.x
 - Django REST Framework
-- SQLite (para desarrollo, recomendable PostgreSQL en producción)
+- PostgreSQL 17 (recomendado para producción)
 
 ## Instalación
 ### 1. Clonar el repositorio
@@ -16,28 +16,45 @@ git clone <URL_DEL_REPOSITORIO>
 cd backend
 ```
 
-### 2. Configurar SQLite en Windows
-Para utilizar SQLite en Windows, sigue estos pasos:
+### 2. Instalar PostgreSQL 17
+Descarga e instala PostgreSQL 17 desde la página oficial:
+[https://www.enterprisedb.com/downloads/postgres-postgresql-downloads](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
-1. Descarga las siguientes herramientas desde la página oficial de SQLite:
-   - [SQLite DLL (64-bit)](https://www.sqlite.org/2025/sqlite-dll-win-x64-3490100.zip)
-   - [SQLite Tools (64-bit)](https://www.sqlite.org/2025/sqlite-tools-win-x64-3490100.zip)
-2. Crea un directorio `C:\sqlite3`.
-3. Extrae los archivos descargados en `C:\sqlite3`.
-4. Agrega `C:\sqlite3` al `PATH` de Windows:
-   - Abre el Explorador de Windows y haz clic derecho en "Este equipo".
-   - Selecciona "Propiedades" > "Configuración avanzada del sistema".
-   - En la pestaña "Opciones avanzadas", haz clic en "Variables de entorno".
-   - En "Variables del sistema", selecciona "Path" y haz clic en "Editar".
-   - Agrega `C:\sqlite3` y guarda los cambios.
+Durante la instalación:
+1. Selecciona las opciones predeterminadas con la contraseña `admin`.
+2. Asegúrate de que PostgreSQL esté corriendo y que pgAdmin esté instalado.
 
-### 3. Instalar Python
+#### Comprobar la instalación de PostgreSQL
+Para verificar que PostgreSQL está instalado y funcionando, ejecuta:
+```bash
+psql --version
+```
+Si la instalación fue correcta, deberías ver algo como:
+```
+psql (PostgreSQL) 17.x
+```
+
+### 3. Crear la base de datos
+Ejecuta `psql` y crea la base de datos:
+```bash
+psql -U postgres
+```
+Dentro del prompt de `psql`, ejecuta:
+```sql
+CREATE DATABASE guau_miau;
+```
+Sal del prompt con:
+```sql
+\q
+```
+
+### 4. Instalar Python
 Descarga e instala la última versión de Python desde:
 [https://www.python.org/](https://www.python.org/)
 
 Durante la instalación, asegúrate de marcar la opción **"Add Python to PATH"**.
 
-### 4. Crear y activar un entorno virtual
+### 5. Crear y activar un entorno virtual
 ```bash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
@@ -45,22 +62,23 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 .\venv\Scripts\activate
 ```
 
-### 5. Instalar dependencias
+### 6. Instalar dependencias
 ```bash
 pip install -r requirements.txt
 ```
-### 6. Aplicar migraciones
+
+### 7. Aplicar migraciones
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 7. Inyectar datos ficticios para pruebas
+### 8. Inyectar datos ficticios para pruebas
 ```bash
-sqlite3 db.sqlite3 ".read fictionalData.sql"
+psql -U postgres -d guau_miau -f fictionalData.sql
 ```
 
-### 8. Ejecutar el servidor
+### 9. Ejecutar el servidor
 ```bash
 python manage.py runserver
 ```
@@ -82,8 +100,7 @@ python manage.py runserver
 - **CORS:** Agregar `django-cors-headers` para la integración con React.
 - **Almacenamiento seguro de contraseñas:** Usar `make_password` o `AbstractUser`.
 - **Subida de imágenes:** Configurar `ImageField` en lugar de `TextField` para fotos de mascotas.
-- **Base de datos en producción:** Usar PostgreSQL o MySQL en lugar de SQLite.
+- **Base de datos en producción:** Usar PostgreSQL en lugar de SQLite.
 
 ---
 Proyecto desarrollado para la gestión eficiente de adopciones de mascotas. 🐶🐱
-
