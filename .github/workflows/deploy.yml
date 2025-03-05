@@ -26,11 +26,13 @@ jobs:
         run: |
           cd backend
           python -m venv venv
-          . venv/bin/activate  # En Windows: .\venv\Scripts\activate
+          . venv/bin/activate
           pip install -r requirements.txt
 
-      - name: Set Django environment to test
-        run: echo "DJANGO_ENV=test" >> $GITHUB_ENV  # Establece la variable de entorno para el entorno de pruebas
+      - name: Set Django environment variables
+        run: |
+          echo "DJANGO_ENV=production" >> $GITHUB_ENV
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
 
       - name: Apply migrations
         run: |
@@ -43,13 +45,7 @@ jobs:
         run: |
           cd backend
           . venv/bin/activate
-          sqlite3 db.sqlite3 ".read fictionalData.sql"  # Ejecutar el script SQL para insertar datos ficticios
-
-      - name: Ejecutar el servidor Django (opcional, solo para verificar que está funcionando)
-        run: |
-          cd backend
-          . venv/bin/activate
-          python manage.py runserver &  # Ejecutar el servidor en segundo plano (aunque no es necesario para Vercel)
+          psql "${{ secrets.DATABASE_URL }}" -f fictionalData.sql
 
       - name: Deploy to Vercel
         env:
