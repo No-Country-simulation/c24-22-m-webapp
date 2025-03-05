@@ -32,7 +32,7 @@ jobs:
       - name: Set Django environment variables
         run: |
           echo "DJANGO_ENV=production" >> $GITHUB_ENV
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+          echo "DATABASE_URL=postgres://postgres:admin@localhost:5432/guau_miau" >> $GITHUB_ENV
 
       - name: Apply migrations
         run: |
@@ -45,7 +45,7 @@ jobs:
         run: |
           cd backend
           . venv/bin/activate
-          psql "${{ secrets.DATABASE_URL }}" -f fictionalData.sql
+          psql "postgres://postgres:admin@localhost:5432/guau_miau" -f fictionalData.sql
 
       - name: Deploy to Vercel
         env:
@@ -54,3 +54,4 @@ jobs:
           cd backend
           npm install -g vercel
           vercel --prod --token $VERCEL_TOKEN --yes
+
