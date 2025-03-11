@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar';
 import "../styles/Home.css"; 
 
 function Home() {
-  // Estado para el formulario de búsqueda
   const [search, setSearch] = useState({
     species: "", 
     age: "", 
@@ -14,24 +13,20 @@ function Home() {
     compatibility: "", 
   });
 
-  // Estado para el modo oscuro
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.getItem('darkMode') === 'true' || false;
   });
 
-  // Manejar cambios en el formulario de búsqueda
   const handleSearchChange = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
-  // Manejar el envío del formulario de búsqueda
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const queryParams = new URLSearchParams(search).toString();
     window.location.href = `/adopt?${queryParams}`;
   };
 
-  // Alternar el modo oscuro
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => {
       const newDarkMode = !prev;
@@ -53,7 +48,7 @@ function Home() {
           </h1>
 
           {/* Formulario de búsqueda */}
-          <form onSubmit={handleSearchSubmit} className="max-w-3xl mx-auto flex items-center gap-4 animate-slide-up">
+          <form onSubmit={handleSearchSubmit} className="max-w-3xl mx-auto flex items-center gap-4 animate-slide-up ">
             <div className="relative w-full">
               <input
                 type="text"
@@ -83,11 +78,11 @@ function Home() {
       <section className="bg-gray-100 dark:bg-gray-800 animate-fade-in py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-[#e8eef4] dark:bg-gray-700 h-64 rounded-xl flex items-center justify-center shadow-md animate-slide-left">
+            <div className="bg-[#e8eef4] dark:bg-gray-700 h-64 rounded-xl flex items-center justify-center shadow-md animate-slide-left border border-gray-300">
               <p className="text-gray-500 dark:text-gray-300">Imagen de mascota (placeholder)</p>
             </div>
 
-            <div className="bg-[#e8eef4] dark:bg-gray-700 p-6 rounded-xl shadow-md animate-slide-right">
+            <div className="bg-[#e8eef4] dark:bg-gray-700 p-6 rounded-xl shadow-md animate-slide-right border border-gray-300">
               <h2 className="text-2xl font-semibold mb-6 text-black dark:text-white">Busca tu match perfecto</h2>
               <div className="space-y-4">
                 {/* Selector de especie */}

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 function PetCard({ pet }) {
@@ -27,5 +28,19 @@ function PetCard({ pet }) {
     </div>
   );
 }
+
+PetCard.propTypes = {
+  pet: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    size: PropTypes.string.isRequired,
+    personality: PropTypes.string.isRequired,
+    kidsCompatibility: PropTypes.string.isRequired,
+    petsCompatibility: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default PetCard;

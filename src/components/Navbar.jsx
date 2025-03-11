@@ -10,8 +10,8 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const navigation = [
     { name: 'Adoptar', to: '/adopt', subItems: ['Perros', 'Gatos', 'Todos'] },
     { name: 'Colaborar', to: '/collaborate', subItems: ['Donar', 'Voluntariado'] },
-    { name: 'Quiénes Somos', to: '/about', subItems: ['Misión', 'Equipo'] },
-    { name: 'Dónde Estamos', to: '/location', subItems: ['Mapa', 'Contacto'] },
+    { name: 'Quiénes Somos', to: '/about', subItems: null },
+    { name: 'Dónde Estamos', to: '/location', subItems: null },
   ];
 
   const handleToggleDarkMode = () => {
@@ -58,7 +58,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 <div className="flex items-center">
                   <Link
                     to={item.to}
-                    className={`inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 ${location.pathname === item.to ? 'border-b-2 border-blue-700 dark:border-blue-400' : ''}`}
+                    className={`inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 ${location.pathname === item.to && item.subItems ? 'border-b-2 border-blue-700 dark:border-blue-400' : ''}`}
                   >
                     {item.name}
                   </Link>

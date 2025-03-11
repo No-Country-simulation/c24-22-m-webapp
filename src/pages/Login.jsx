@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom'; // Importamos el componente Link para la navegación entre rutas
 import { FcGoogle } from 'react-icons/fc'; // Ícono de Google
 import { FaFacebook } from 'react-icons/fa'; // Ícono de Facebook
@@ -81,7 +82,7 @@ const Login = () => {
         </div>
 
         {/* Sección de Registro */}
-        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center bg-gray-200 dark:bg-gray-700 rounded-2xl shadow-lg">
+        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center bg-[#e8eef4]  dark:bg-gray-700 rounded-2xl shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 text-center">
             ¡Hola Rescatista!
           </h2>
@@ -91,7 +92,7 @@ const Login = () => {
           {/* Enlace para registrarse */}
           <Link
             to="/signup"
-            className="bg-green-600 hover:bg-green-700 text-white py-2 px-8 rounded-lg font-medium transition-colors"
+            className="bg-[#9acd32] hover:bg-green-700 text-white py-2 px-8 rounded-full font-medium transition-colors"
           >
             SIGN UP
           </Link>

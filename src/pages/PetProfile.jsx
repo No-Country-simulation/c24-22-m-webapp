@@ -1,11 +1,9 @@
-import React from 'react'; // Importamos React
-import { useParams } from "react-router-dom"; // useParams se utiliza para obtener parámetros de la URL
+import React from 'react'; 
+import { useParams } from "react-router-dom";
 
 function PetProfile() {
-  // Extraemos el id de la mascota desde los parámetros de la URL
   const { id } = useParams();
 
-  // Simulación de los datos de la mascota (normalmente estos vendrían de un backend)
   const pet = {
     id,
     name: "Luna",
