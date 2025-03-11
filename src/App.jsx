@@ -1,18 +1,19 @@
-import React from 'react'; // Importamos React explícitamente
-import { Routes, Route, Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar'; // Importamos Navbar
+import React from 'react'; 
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; 
 import Home from './pages/Home';
 import Adopt from './pages/Adopt';
 import Collaborate from './pages/Collaborate';
 import About from './pages/About';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Location from './pages/Location'
 import PetProfile from './pages/PetProfile';
 
 function App() {
   return (
     <>
-      <Navbar /> {/* Navbar aparece en todas las rutas */}
+      <Navbar /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/adopt" element={<Adopt />} />

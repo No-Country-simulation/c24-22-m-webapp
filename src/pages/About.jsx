@@ -1,11 +1,7 @@
+import React from 'react'; 
 import { Link } from 'react-router-dom';
-// Importamos íconos de react-icons para hacer la interfaz más visual y atractiva
 import { FaPaw, FaHeart, FaHandshake } from 'react-icons/fa';
 
-/**
- * Página "Acerca de Nosotros" de la aplicación.
- * Contiene información sobre la organización, su misión y visión.
- */
 function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-6">
