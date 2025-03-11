@@ -10,8 +10,8 @@ function PetCard({ pet }) {
         className="w-full h-48 object-cover rounded-t-lg"
       />
       <div className="p-4">
-        <h3 className="text-xl font-semibold">{pet.name}</h3>
-        <p className="text-gray-600 dark:text-gray-300">{pet.species} - {pet.breed}</p>
+        <h3 className="text-xl font-semibold text-black dark:text-white">{pet.name}</h3>
+        <p className="text-gray-500 dark:text-gray-400">{pet.species} - {pet.breed}</p>
         <p className="text-gray-500 dark:text-gray-400">{pet.age} años - {pet.size}</p>
         <p className="text-gray-500 dark:text-gray-400">Personalidad: {pet.personality}</p>
         <p className="text-gray-500 dark:text-gray-400">
@@ -19,7 +19,7 @@ function PetCard({ pet }) {
         </p>
         <Link
           to={`/pet/${pet.id}`}
-          className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="mt-3 inline-block bg-[#9acd32] text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600"
         >
           Ver Perfil
         </Link>

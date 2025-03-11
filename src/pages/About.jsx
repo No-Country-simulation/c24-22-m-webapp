@@ -1,8 +1,6 @@
-// pages/About.jsx
-import React from 'react';
 import { Link } from 'react-router-dom';
 // Importamos íconos de react-icons para hacer la interfaz más visual y atractiva
-import { FaPaw, FaHeart, FaHome, FaHandshake } from 'react-icons/fa';
+import { FaPaw, FaHeart, FaHandshake } from 'react-icons/fa';
 
 /**
  * Página "Acerca de Nosotros" de la aplicación.

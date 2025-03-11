@@ -1,23 +1,19 @@
 // pages/Adopt.jsx
 import React, { useState } from 'react';
 import PetCard from "../components/PetCard";
-import { AiOutlineSearch } from "react-icons/ai"; // Ícono de lupa para los filtros
 
-// Componente de la página de adopción de mascotas
 function Adopt() {
-  // Estado para almacenar los filtros seleccionados por el usuario
   const [filters, setFilters] = useState({
-    species: "",           // Tipo de mascota (Perro/Gato)
-    breed: "",             // Raza de la mascota
-    age: "",               // Edad de la mascota
-    size: "",              // Tamaño de la mascota
-    location: "",          // Ubicación de la mascota
-    personality: "",       // Personalidad de la mascota
-    kidsCompatibility: "", // Compatibilidad con niños
-    petsCompatibility: "", // Compatibilidad con otras mascotas
+    species: "",
+    breed: "",
+    age: "",
+    size: "",
+    location: "",
+    personality: "",
+    kidsCompatibility: "",
+    petsCompatibility: "",
   });
 
-  // Datos simulados de mascotas (modificados para incluir los nuevos filtros)
   const pets = [
     {
       id: 1,
@@ -45,7 +41,6 @@ function Adopt() {
     },
   ];
 
-  // Filtrado de las mascotas basándose en los filtros aplicados
   const filteredPets = pets.filter((pet) =>
     (!filters.species || pet.species === filters.species) &&
     (!filters.breed || pet.breed.toLowerCase().includes(filters.breed.toLowerCase())) &&
@@ -57,138 +52,130 @@ function Adopt() {
     (!filters.petsCompatibility || pet.petsCompatibility === filters.petsCompatibility)
   );
 
-  // Función para manejar cambios en los filtros (se actualiza el estado de los filtros)
   const handleFilterChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
+
   return (
-    <div className="container mx-auto p-4 pt-20">
-      <h1 className="text-3xl font-bold mb-6 text-center">Encuentra tu Compañero</h1>
+    <div className="container bg-gray-100 mx-auto p-4 pt-20">
+      <h1 className="text-3xl bg-gray-100 font-bold mb-6 text-center">Encuentra tu Compañero</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Filtros */}
-        <div className="col-span-1 bg-gray-800 dark:bg-gray-900 p-6 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-4 text-white">Filtros</h2>
+        <div className="col-span-1 bg-[#e8eef4] dark:bg-gray-900 p-6 rounded-lg ">
+          <h2 className="text-xl font-bold mb-4 text-black dark:text-white">Filtros</h2>
           <div className="space-y-4">
             {/* Filtro de Tipo de Mascota */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Tipo de Mascota</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Tipo de Mascota</label>
               <div className="relative">
                 <select
                   name="species"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500"
                 >
                   <option value="">Selecciona</option>
                   <option value="Perro">Perro</option>
                   <option value="Gato">Gato</option>
                 </select>
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Raza */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Raza</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Raza</label>
               <div className="relative">
                 <input
                   type="text"
                   name="breed"
                   placeholder="Ej. Labrador"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500 placeholder-gray-500"
                 />
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Edad */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Edad</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Edad</label>
               <div className="relative">
                 <input
                   type="number"
                   name="age"
                   placeholder="Ej. 2"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500 placeholder-gray-500"
                 />
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Tamaño */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Tamaño</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Tamaño</label>
               <div className="relative">
                 <select
                   name="size"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500"
                 >
                   <option value="">Selecciona</option>
                   <option value="Pequeño">Pequeño</option>
                   <option value="Mediano">Mediano</option>
                   <option value="Grande">Grande</option>
                 </select>
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Ubicación */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Ubicación</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Ubicación</label>
               <div className="relative">
                 <input
                   type="text"
                   name="location"
                   placeholder="Ej. Madrid"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500 placeholder-gray-500"
                 />
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Personalidad */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Personalidad</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Personalidad</label>
               <div className="relative">
                 <input
                   type="text"
                   name="personality"
                   placeholder="Ej. Juguetón"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500 placeholder-gray-500"
                 />
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Compatibilidad con Niños */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Compatibilidad con Niños</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Compatibilidad con Niños</label>
               <div className="relative">
                 <select
                   name="kidsCompatibility"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500"
                 >
                   <option value="">Selecciona</option>
                   <option value="Sí">Sí</option>
                   <option value="No">No</option>
                 </select>
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
             {/* Filtro de Compatibilidad con Mascotas */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-300">Compatibilidad con Mascotas</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Compatibilidad con Mascotas</label>
               <div className="relative">
                 <select
                   name="petsCompatibility"
                   onChange={handleFilterChange}
-                  className="w-full p-2 bg-gray-700 border border-gray-600 rounded dark:bg-gray-800 text-white"
+                  className="w-full p-2 text-sm bg-white border border-gray-600 rounded-lg dark:bg-gray-800 text-gray-500"
                 >
                   <option value="">Selecciona</option>
                   <option value="Sí">Sí</option>
                   <option value="No">No</option>
                 </select>
-                <AiOutlineSearch className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
             </div>
           </div>

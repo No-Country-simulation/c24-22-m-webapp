@@ -1,4 +1,3 @@
-import React from 'react'; // Importamos React
 import { Link } from 'react-router-dom'; // Importamos el componente Link para la navegación entre rutas
 import { FcGoogle } from 'react-icons/fc'; // Ícono de Google
 import { FaFacebook } from 'react-icons/fa'; // Ícono de Facebook

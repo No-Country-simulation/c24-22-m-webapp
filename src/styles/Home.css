@@ -57,9 +57,9 @@
   animation-delay: 0.2s;
 }
 
-/* Hero en fondo azul claro */
+/* Hero en fondo gris claro */
 .hero-container {
-  background-color: #93c5fd; /* Azul cielo suave */
+  background-color: #dcdcdc; /* Fondo general gris claro */
   padding: 4rem 0;
 }
 
@@ -72,6 +72,7 @@
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -103,7 +104,7 @@
 
 .search-button {
   padding: 0.75rem 1.5rem;
-  background-color: #1e40af; /* Azul medianoche oscuro */
+  background-color: #9acd32; /* Fondo verde claro */
   color: white;
   border-radius: 9999px;
   border: none;
@@ -112,7 +113,7 @@
 }
 
 .search-button:hover {
-  background-color: #172554; /* Azul más oscuro al hover */
+  background-color: #7cae24; /* Verde más oscuro al hover */
   box-shadow: 0 4px 6px rgba(30, 64, 175, 0.3);
 }
 
@@ -122,9 +123,9 @@
   transition: all 0.3s ease;
 }
 
-/* Sección de filtros en fondo azul claro con dos columnas */
+/* Sección de filtros en fondo gris claro con dos columnas */
 .filter-section {
-  background-color: #93c5fd; /* Azul cielo suave */
+  background-color: #dcdcdc; /* Fondo gris claro */
   padding: 4rem 0;
 }
 
@@ -140,7 +141,7 @@
 }
 
 .filters-container {
-  background-color: #1e40af; /* Azul medianoche oscuro para los filtros */
+  background-color: #e0ffff; /* Fondo azul claro para los cuadros */
   padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -151,7 +152,8 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  margin-top: 1.5rem;
+  color: #1f2937;
   transition: all 0.3s ease;
 }
 
@@ -166,7 +168,7 @@
   display: block; /* Mostramos las etiquetas alineadas a la izquierda */
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
-  color: #ffffff;
+  color: #1f2937;
   transition: all 0.3s ease;
   text-align: left;
 }
@@ -185,8 +187,8 @@
 }
 
 .filter-input:focus {
-  border-color: #1e40af; /* Azul medianoche oscuro */
-  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.5);
+  border-color: #9acd32; /* Verde claro */
+  box-shadow: 0 0 0 3px rgba(154, 205, 50, 0.5);
 }
 
 .filter-input:disabled {
@@ -208,14 +210,14 @@
   transition: all 0.3s ease;
 }
 
-/* Secciones inferiores en fondo azul claro */
+/* Secciones inferiores en fondo gris claro */
 .sections {
-  background-color: #93c5fd; /* Azul cielo suave */
+  background-color: #dcdcdc; /* Fondo gris claro */
   padding: 4rem 0;
 }
 
 .section-card {
-  background: #1e40af; /* Azul medianoche oscuro para las tarjetas */
+  background: #e0ffff; /* Fondo azul claro para las tarjetas */
   padding: 2rem;
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -230,27 +232,28 @@
 .section-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #1f2937;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   transition: all 0.3s ease;
 }
 
 .section-text {
-  color: #d1d5db;
+  color: #1f2937;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .section-link {
-  color: #1e40af; /* Azul medianoche oscuro */
+  color: #9acd32; /* Verde claro para enlaces */
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .section-link:hover {
-  color: #172554; /* Azul más oscuro al hover */
+  color: #7cae24; /* Un verde más oscuro al hover */
   text-decoration: underline;
 }
 
@@ -283,11 +286,11 @@
   }
 
   .grid-cols-2 {
-    grid-template-columns: 1fr; /* Apilamos en móviles */
+    grid-template-columns: 1fr;
   }
 
   .pet-image {
-    height: 12rem; /* Reducimos la altura en móviles */
+    height: 12rem; 
   }
 
   .filters-container {
@@ -304,6 +307,7 @@
   }
 
   .section-card {
+    margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1.5rem;
   }
