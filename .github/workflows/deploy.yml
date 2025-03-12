@@ -1,0 +1,34 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - NewFront  # Se ejecuta automáticamente cuando hay un push en esta rama
+  workflow_dispatch:  # Permite ejecutar el despliegue manualmente desde GitHub Actions
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Construir el proyecto
+        run: npm run build
+
+      - name: Desplegar en GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
