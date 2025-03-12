@@ -186,21 +186,29 @@ Este proyecto está bajo la licencia **MIT**.
 
 ---
 
-## 👥 Equipo
+👥 Equipo
 
-- **Nahuel Marcilli** - Backend
-  - GitHub: [@marili-mn](https://github.com/marili-mn)
-  - LinkedIn: [Nahuel Marcilli](https://www.linkedin.com/in/nahuelmarcilli/)
-- **Jose** - Frontend
-  - GitHub: [@joseorteha].(https://github.com/joseorteha).
-  - LinkedIn: [Jose Ortega].(https://www.linkedin.com/in/jos%C3%A9-ortega-497387321).
-- **Camila** - Frontend
-- **Florencia Mauna** - UI/UX
-  - GitHub: [@FlorMauna](https://github.com/FlorMauna)
-  - LinkedIn: [Florencia Mauna](https://www.linkedin.com/in/florenciamauna/)
-- **Samanta Ramos Podadera** - QA
-  - GitHub: [@SamantaRamosPodadera](https://github.com/SamantaRamosPodadera)
-  - LinkedIn: [Samanta Ramos Podadera](https://www.linkedin.com/in/samantaramospodadera/)
+Nahuel Marcilli - Backend
+
+GitHub: https://github.com/marili-mn
+LinkedIn: https://www.linkedin.com/in/nahuel-marcilli/
+
+Jose Ortega - Frontend
+
+GitHub: https://github.com/joseorteha
+LinkedIn: https://www.linkedin.com/in/jos%C3%A9-ortega-497387321/
+
+Camila - Frontend
+
+Florencia Mauna - UI/UX
+
+GitHub: https://github.com/FlorMauna
+LinkedIn: https://www.linkedin.com/in/florencia-mauna/
+
+Samanta Ramos Podadera - QA
+
+GitHub: https://github.com/SamantaRamosPodadera
+LinkedIn: https://www.linkedin.com/in/samanta-ramos-podadera/
 
 ---
 
