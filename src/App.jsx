@@ -24,6 +24,8 @@ function App() {
         <Route path="location" element={<Location/>} />
         <Route path="petprofile" element={<PetProfile/>} />
       </Routes>
+       
+      <Footer />
     </>
   );
 }
