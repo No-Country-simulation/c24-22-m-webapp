@@ -187,30 +187,28 @@ Este proyecto está bajo la licencia **MIT**.
 ---
 
 👥 Equipo
+---
 
 Nahuel Marcilli - Backend
-
 GitHub: https://github.com/marili-mn
 LinkedIn: https://www.linkedin.com/in/nahuel-marcilli/
 
 Jose Ortega - Frontend
-
 GitHub: https://github.com/joseorteha
 LinkedIn: https://www.linkedin.com/in/jos%C3%A9-ortega-497387321/
 
 Camila - Frontend
+GitHub: https://github.com/C-LedezmaRodriguez
+LinkedIn: https://www.linkedin.com/in/camila-ledezma-rodriguez/
 
 Florencia Mauna - UI/UX
-
 GitHub: https://github.com/FlorMauna
 LinkedIn: https://www.linkedin.com/in/florencia-mauna/
 
 Samanta Ramos Podadera - QA
-
 GitHub: https://github.com/SamantaRamosPodadera
 LinkedIn: https://www.linkedin.com/in/samanta-ramos-podadera/
 
----
 
 🎯 **Gracias por apoyar este proyecto!** 🎯
 
