@@ -1,12 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./src/pages/css/*.css",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-  darkMode: "class",
-};
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  base: "/c24-22-m-webapp/", // Asegúrate de poner el nombre del repositorio de GitHub
+});
