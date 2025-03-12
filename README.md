@@ -112,7 +112,7 @@ cd frontend
 npm install
 npm start
 
-📌 Acceder a la plataforma en http://localhost:3000.
+📌 Acceder a la plataforma en http://localhost:5173.
 
 🤝 Contribuir
 
