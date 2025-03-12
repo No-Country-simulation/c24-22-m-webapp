@@ -19,16 +19,6 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes slideLeft {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideRight {
-  from { transform: translateX(20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out;
 }
@@ -41,14 +31,6 @@
   animation: slideUp 0.8s ease-out;
 }
 
-.animate-slide-left {
-  animation: slideLeft 0.8s ease-out;
-}
-
-.animate-slide-right {
-  animation: slideRight 0.8s ease-out;
-}
-
 .delay-100 {
   animation-delay: 0.1s;
 }
@@ -57,7 +39,7 @@
   animation-delay: 0.2s;
 }
 
-/* Hero en fondo gris claro */
+/* Sección principal */
 .hero-container {
   background-color: #dcdcdc; /* Fondo general gris claro */
   padding: 4rem 0;
@@ -123,138 +105,127 @@
   transition: all 0.3s ease;
 }
 
-/* Sección de filtros en fondo gris claro con dos columnas */
-.filter-section {
-  background-color: #dcdcdc; /* Fondo gris claro */
+/* Imagen del gato pintando */
+.cat-painting {
+  max-width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  animation: slideUp 0.8s ease-out;
+}
+
+.smaller-image {
+  max-width: 200px; /* Ajusta este valor según lo que necesites */
+  height: auto;
+}
+
+/* Sección de Galería de Mascotas */
+.gallery-section {
+  background-color: #f3f4f6;
   padding: 4rem 0;
+  text-align: center;
 }
 
-.pet-image {
-  background-color: #e5e7eb; /* Gris claro para la imagen placeholder */
-  height: 16rem; /* Altura fija para la imagen */
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.gallery-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }
 
-.filters-container {
-  background-color: #e0ffff; /* Fondo azul claro para los cuadros */
+.gallery-section .gallery-card {
+  background-color: #fff;
   padding: 1.5rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
-.filters-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  color: #1f2937;
-  transition: all 0.3s ease;
-}
-
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.3s ease;
-}
-
-.filter-label {
-  display: block; /* Mostramos las etiquetas alineadas a la izquierda */
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-  color: #1f2937;
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.filter-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #6b7280; /* Gris medio */
-  border-radius: 9999px;
-  background-color: #e5e7eb; /* Gris claro para inputs */
-  color: #1f2937;
-  font-size: 0.875rem;
-  appearance: none; /* Quitamos el estilo predeterminado de selects */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.filter-input:focus {
-  border-color: #9acd32; /* Verde claro */
-  box-shadow: 0 0 0 3px rgba(154, 205, 50, 0.5);
-}
-
-.filter-input:disabled {
-  background-color: #e5e7eb;
-  color: #6b7280;
-  opacity: 0.7;
-}
-
-/* Ícono de búsqueda en filtros */
-.search-icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1rem;
-  height: 1rem;
-  color: #6b7280;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Secciones inferiores en fondo gris claro */
-.sections {
-  background-color: #dcdcdc; /* Fondo gris claro */
-  padding: 4rem 0;
-}
-
-.section-card {
-  background: #e0ffff; /* Fondo azul claro para las tarjetas */
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.section-card:hover {
-  transform: translateY(-5px);
+.gallery-section .gallery-card:hover {
+  transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.section-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+.gallery-section img {
+  width: 100%;
+  height: 12rem;
+  object-fit: contain; /* Asegura que la imagen completa se muestre */
+  object-position: center; /* Centra la imagen si es más pequeña */
+  border-radius: 0.5rem;
+  background-color: #fff; /* Fondo blanco para evitar espacios vacíos feos */
+}
+
+/* Sección de Testimonios Mejorada */
+.testimonials-section {
+  background-color: #f3f4f6;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.testimonials-section .testimonial-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.testimonials-section .testimonial-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials-section .testimonial-card p,
+.testimonials-section .testimonial-card strong {
   color: #1f2937;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
 }
 
-.section-text {
-  color: #1f2937;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
+.testimonials-section .testimonial-card p.dark,
+.testimonials-section .testimonial-card strong.dark {
+  color: #e5e7eb;
 }
 
-.section-link {
-  color: #9acd32; /* Verde claro para enlaces */
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
+/* Modo Oscuro */
+body.dark {
+  background-color: #1f2937;
+  color: #e5e7eb;
 }
 
-.section-link:hover {
-  color: #7cae24; /* Un verde más oscuro al hover */
-  text-decoration: underline;
+body.dark .hero-container {
+  background-color: #1f2937;
+}
+
+body.dark .search-input {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+body.dark .search-button {
+  background-color: #7cae24;
+}
+
+body.dark .cat-painting {
+  filter: invert(1);
+}
+
+body.dark .gallery-section,
+body.dark .testimonials-section {
+  background-color: #1f2937;
+}
+
+body.dark .gallery-section .gallery-card,
+body.dark .testimonials-section .testimonial-card {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+body.dark .gallery-section .gallery-card:hover,
+body.dark .testimonials-section .testimonial-card:hover {
+  box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive */
@@ -281,39 +252,16 @@
     width: 100%;
   }
 
-  .filter-section {
-    padding: 1rem 0;
-  }
-
-  .grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
-
-  .pet-image {
-    height: 12rem; 
-  }
-
-  .filters-container {
-    padding: 1rem;
+  .cat-painting {
     margin-top: 1rem;
   }
 
-  .filters {
-    gap: 0.75rem;
-  }
-
-  .sections {
-    padding: 2rem 0;
-  }
-
-  .section-card {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+  .smaller-image {
+    max-width: 150px; /* Ajusta este valor según lo que necesites */
   }
 
   /* Animaciones en móviles */
-  .animate-fade-in, .animate-slide-down, .animate-slide-up, .animate-slide-left, .animate-slide-right {
+  .animate-fade-in, .animate-slide-down, .animate-slide-up {
     animation-duration: 0.6s;
   }
 }
