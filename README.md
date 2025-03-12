@@ -84,6 +84,6 @@ joseorteha-plataform-adoption/
   Tarjetas de mascotas (PetCard) para mostrar información relevante.
   Manejo de errores con ErrorBoundary.
 ### Si tienes preguntas o sugerencias, no dudes en contactarnos:
-  Frontend Lead: Jose Ortega (joseortegahac@gmail.com)
+
 
 
