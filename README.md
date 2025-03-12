@@ -192,6 +192,8 @@ Este proyecto está bajo la licencia **MIT**.
   - GitHub: [@marili-mn](https://github.com/marili-mn)
   - LinkedIn: [Nahuel Marcilli](https://www.linkedin.com/in/nahuelmarcilli/)
 - **Jose** - Frontend
+  - GitHub: [@joseorteha].(https://github.com/joseorteha).
+  - LinkedIn: [Jose Ortega].(https://www.linkedin.com/in/jos%C3%A9-ortega-497387321).
 - **Camila** - Frontend
 - **Florencia Mauna** - UI/UX
   - GitHub: [@FlorMauna](https://github.com/FlorMauna)
