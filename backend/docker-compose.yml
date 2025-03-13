@@ -1,0 +1,32 @@
+
+services:
+  backend:
+    build: .
+    container_name: guau_miau_api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=guau_miau.settings
+      - DATABASE_URL=postgres://postgres:admin@db:5432/guau_miau_db
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "guau_miau.wsgi:application"]
+
+  db:
+    image: postgres:15
+    container_name: guau_miau_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: guau_miau_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

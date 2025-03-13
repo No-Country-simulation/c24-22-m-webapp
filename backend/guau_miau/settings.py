@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'guau_miau_db',  # Nombre de la base de datos
         'USER': 'postgres',  # Reemplaza con tu usuario de PostgreSQL
         'PASSWORD': 'admin',  # Reemplaza con tu contraseña
-        'HOST': 'localhost',  # O la IP del servidor de PostgreSQL
+        'HOST': 'guau_miau_db',  # O la IP del servidor de PostgreSQL
         'PORT': '5432',  # Puerto de PostgreSQL
     }
 }
