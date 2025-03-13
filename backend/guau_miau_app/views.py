@@ -1,4 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from django.db.models import Q
 from .models import Adopter, Shelter, Pet, AdoptionRequest, Collaboration, Administrator, UserManagement, SearchFilter
 from .serializers import AdopterSerializer, ShelterSerializer, PetSerializer, AdoptionRequestSerializer, CollaborationSerializer, AdministratorSerializer, UserManagementSerializer, SearchFilterSerializer
 
@@ -30,6 +32,23 @@ class UserManagementViewSet(viewsets.ModelViewSet):
     queryset = UserManagement.objects.all()
     serializer_class = UserManagementSerializer
 
-class SearchFilterViewSet(viewsets.ModelViewSet):
-    queryset = SearchFilter.objects.all()
-    serializer_class = SearchFilterSerializer
+class SearchFilterViewSet(viewsets.ViewSet):
+    def create(self, request):
+        filters = Q()
+        if "species" in request.data:
+            filters &= Q(species__iexact=request.data["species"])
+        if "breed" in request.data:
+            filters &= Q(breed__iexact=request.data["breed"])
+        if "min_age" in request.data:
+            filters &= Q(age__gte=request.data["min_age"])
+        if "max_age" in request.data:
+            filters &= Q(age__lte=request.data["max_age"])
+        if "size" in request.data:
+            filters &= Q(size__iexact=request.data["size"])
+        if "location" in request.data:
+            filters &= Q(location__iexact=request.data["location"])
+
+        results = Pet.objects.filter(filters)
+        serializer = PetSerializer(results, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

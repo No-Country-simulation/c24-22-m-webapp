@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'guau_miau.urls'
@@ -83,6 +84,9 @@ DATABASES = {
         'PASSWORD': 'admin',  # Reemplaza con tu contraseña
         'HOST': 'localhost',  # O la IP del servidor de PostgreSQL
         'PORT': '5432',  # Puerto de PostgreSQL
+        'OPTIONS': {
+            'client_encoding': 'utf8mb4',  # Asegúrate de que tu base de datos maneje UTF-8
+        },
     }
 }
 
@@ -109,7 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
+
+DEFAULT_CHARSET ="utf-8"
 
 TIME_ZONE = 'UTC'
 
