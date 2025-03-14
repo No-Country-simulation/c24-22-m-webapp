@@ -14,6 +14,7 @@ import PetProfile from './pages/PetProfile';
 import SearchResults from './pages/SearchResults';
 import AdoptionForm from './pages/AdoptionForm'; 
 import Contact from './pages/Contact';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/adopt" element={<Adopt />} />
         <Route path="/collaborate" element={<Collaborate />} />
         <Route path="/about" element={<About />} />
