@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Añadí Link aquí
 
 function Adopt() {
   const [filters, setFilters] = useState({
@@ -444,7 +444,7 @@ function Adopt() {
               </div>
             </div>
             
-            {/* Sección de ayuda */}
+            {/* Sección de ayuda con enlace a Contact */}
             {filteredPets.length > 0 && (
               <div className="rounded-2xl shadow-xl p-8 text-white" style={{ 
                 background: `linear-gradient(to right, ${colors.blue}, ${colors.yellow})`,
@@ -457,9 +457,13 @@ function Adopt() {
                     </p>
                   </div>
                   <div className="shrink-0">
-                    <button className="bg-white hover:bg-gray-100 font-bold py-3 px-6 rounded-xl shadow-lg transition-all" style={{ color: colors.blue }}>
+                    <Link
+                      to="/contact"
+                      className="bg-white hover:bg-gray-100 font-bold py-3 px-6 rounded-xl shadow-lg transition-all inline-block"
+                      style={{ color: colors.blue }}
+                    >
                       Contactar Asesor
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
