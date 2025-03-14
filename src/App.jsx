@@ -13,6 +13,7 @@ import Location from './pages/Location';
 import PetProfile from './pages/PetProfile';
 import SearchResults from './pages/SearchResults';
 import AdoptionForm from './pages/AdoptionForm'; 
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/adopt" element={<Adopt />} />
         <Route path="/collaborate" element={<Collaborate />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/location" element={<Location />} />
