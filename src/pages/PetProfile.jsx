@@ -286,7 +286,7 @@ function PetProfile() {
               </div>
               <div className="space-y-2">
                 <button
-                  onClick={() => navigate(`/adoption-form/${pet.id}`)}
+                  onClick={() => navigate(`/adoption-form/${pet.id}`, { state: { pet } })} // Cambio aquí: pasar el estado
                   className="w-full py-2 px-4 rounded-md text-sm text-white transition-colors bg-blue-500 hover:bg-blue-600"
                 >
                   Sí, quiero adoptar
