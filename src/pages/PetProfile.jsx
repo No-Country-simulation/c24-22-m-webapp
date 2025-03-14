@@ -39,7 +39,10 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/gato-juguetón-adorable-123456/',
+        'https://pixabay.com/es/photos/gato-joven-jugando-654321/'
+      ],
     },
     {
       id: 2,
@@ -61,7 +64,10 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/gato-siamés-elegante-789012/',
+        'https://pixabay.com/es/photos/gato-siamés-curioso-210987/'
+      ],
     },
     {
       id: 3,
@@ -83,7 +89,10 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/gato-persa-tranquilo-345678/',
+        'https://pixabay.com/es/photos/gato-persa-relajado-876543/'
+      ],
     },
     {
       id: 4,
@@ -93,7 +102,7 @@ function PetProfile() {
       age: 2,
       gender: 'Hembras',
       status: 'Castradas - Vacunadas',
-      description: 'Dos hermanitos inseparables que buscan un hogar juntos.',
+      description: 'Dos hermanitas inseparables que buscan un hogar juntas.',
       compatibility: {
         kids: true,
         cats: false,
@@ -105,17 +114,20 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/pitbull-hermanas-123789/',
+        'https://pixabay.com/es/photos/pitbull-duo-456123/'
+      ],
     },
     {
       id: 5,
-      name: 'Budin',
+      name: 'Budín',
       species: 'Perro',
       breed: 'Rottweiler',
       age: 4,
       gender: 'Macho',
       status: 'Castrado - Vacunado',
-      description: 'Budin es un perro majestuoso y protector.',
+      description: 'Budín es un perro majestuoso y protector.',
       compatibility: {
         kids: true,
         cats: false,
@@ -127,7 +139,10 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/rottweiler-majestuoso-987654/',
+        'https://pixabay.com/es/photos/rottweiler-protector-321987/'
+      ],
     },
     {
       id: 6,
@@ -149,11 +164,13 @@ function PetProfile() {
         location: 'Mar del Plata, Buenos Aires, Argentina',
         email: 'soshocicos.mdp@gmail.com',
       },
-      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+      photos: [
+        'https://pixabay.com/es/photos/labrador-familiar-654789/',
+        'https://pixabay.com/es/photos/labrador-juguetón-987321/'
+      ],
     },
   ];
-
-  // Obtener los datos del state si existen (desde Adopt), o buscar en el arreglo pets (desde SearchResults)
+  
   const petFromState = location.state?.pet;
   const petFromArray = pets.find((pet) => pet.id === parseInt(id));
   const pet = petFromState || petFromArray;
@@ -173,7 +190,6 @@ function PetProfile() {
   }
 
   const handleBackToSearch = () => {
-    // Determinar a dónde regresar según de dónde vino
     const previousPath = location.state?.from || '/search';
     navigate(previousPath);
   };
@@ -286,7 +302,7 @@ function PetProfile() {
               </div>
               <div className="space-y-2">
                 <button
-                  onClick={() => navigate(`/adoption-form/${pet.id}`, { state: { pet } })} // Cambio aquí: pasar el estado
+                  onClick={() => navigate(`/adoption-form/${pet.id}`, { state: { pet } })} 
                   className="w-full py-2 px-4 rounded-md text-sm text-white transition-colors bg-blue-500 hover:bg-blue-600"
                 >
                   Sí, quiero adoptar

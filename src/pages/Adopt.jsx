@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Añadí Link aquí
+import { useNavigate, Link } from 'react-router-dom';
 
 function Adopt() {
   const [filters, setFilters] = useState({
@@ -16,12 +16,11 @@ function Adopt() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Colores de la nueva paleta
   const colors = {
-    blue: "#55a9e6",    // Azul de la paleta
-    yellow: "#ffcf56",  // Amarillo de la paleta
-    coral: "#ea7a77",   // Rojo/coral de la paleta
-    green: "#7cc474",   // Verde de la paleta
+    blue: "#55a9e6",    
+    yellow: "#ffcf56",  
+    coral: "#ea7a77",   
+    green: "#7cc474",   
   };
 
   const pets = [
@@ -167,12 +166,10 @@ function Adopt() {
     });
   };
 
-  // Iconos para las características de las mascotas
   const getSpeciesIcon = (species) => {
     return species === "Perro" ? "🐕" : "🐈";
   };
 
-  // Función para asignar colores según el tipo de mascota
   const getPetColor = (species) => {
     return species === "Perro" ? colors.blue : colors.coral;
   };
