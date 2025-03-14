@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 
 function AdoptionForm() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation(); // Para acceder al estado pasado desde PetProfile
   const [currentStep, setCurrentStep] = useState(1);
 
+  // Lista de mascotas como respaldo
   const pets = [
     {
       id: 1,
@@ -141,7 +143,11 @@ function AdoptionForm() {
       photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
     },
   ];
-  const pet = pets.find(p => p.id === parseInt(id));
+
+  // Obtener la mascota del estado (desde PetProfile) o del arreglo como respaldo
+  const petFromState = location.state?.pet;
+  const petFromArray = pets.find(p => p.id === parseInt(id));
+  const pet = petFromState || petFromArray;
 
   const [formData, setFormData] = useState({
     nombreApellido: '',
@@ -151,7 +157,7 @@ function AdoptionForm() {
     direccion: '',
     nucleoFamiliar: '',
     tipoVivienda: '',
-    nombreMascota: pet?.name || '', 
+    nombreMascota: pet?.name || '', // Inicializar con el nombre de la mascota
     motivosAdopcion: '',
     experienciaAnimales: '',
     familiaDeAcuerdo: '',
@@ -173,7 +179,7 @@ function AdoptionForm() {
     e.preventDefault();
     console.log('Formulario enviado:', formData);
     alert('¡Formulario enviado con éxito! El refugio se pondrá en contacto contigo pronto.');
-    navigate('/'); 
+    navigate('/');
   };
 
   const nextStep = () => {
@@ -181,13 +187,28 @@ function AdoptionForm() {
     window.scrollTo(0, 0);
   };
 
+  // Si no se encuentra la mascota, mostrar un mensaje
+  if (!pet) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 px-4 py-8 text-center">
+        <div>Mascota no encontrada</div>
+        <button
+          onClick={() => navigate('/adopt')}
+          className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Volver a Adoptar
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 px-4 py-8 animate-fade-in">
       <div className="max-w-4xl mx-auto">
-        {/* Título */}
+        {/* Título con el nombre de la mascota */}
         <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6 text-center">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-            Solicitud de Adopción para {pet?.name || 'esta mascota'}
+            Solicitud de Adopción para {pet.name}
           </h1>
         </div>
 
@@ -227,8 +248,8 @@ function AdoptionForm() {
 
               <div className="w-full md:w-1/3 flex items-center justify-center mt-6 md:mt-0">
                 <img
-                  src={pet?.photos[0] || '/assets/placeholder-pet.jpg'}
-                  alt={pet?.name || 'Mascota'}
+                  src={pet.photos?.[0] || '/assets/placeholder-pet.jpg'}
+                  alt={pet.name}
                   className="w-48 h-48 object-cover rounded-full border-2 border-gray-300"
                 />
               </div>
@@ -327,6 +348,18 @@ function AdoptionForm() {
                 </div>
 
                 <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Nombre de la Mascota</label>
+                    <input
+                      type="text"
+                      name="nombreMascota"
+                      value={formData.nombreMascota}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white"
+                      readOnly // Hacerlo solo lectura para preservar el nombre
+                    />
+                  </div>
+
                   <div>
                     <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Motivos para adoptar</label>
                     <input
