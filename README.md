@@ -7,81 +7,50 @@ Guau and Miau es una API RESTful desarrollada en Django con Django REST Framewor
 - Python 3.x
 - Django 5.x
 - Django REST Framework
-- PostgreSQL 17 (recomendado para producción)
+- PostgreSQL 17
+- Docker
 
-## Instalación
+## Instalación y Despliegue en Local con Docker
+
 ### 1. Clonar el repositorio
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 cd backend
 ```
 
-### 2. Instalar PostgreSQL 17
-Descarga e instala PostgreSQL 17 desde la página oficial:
-[https://www.enterprisedb.com/downloads/postgres-postgresql-downloads](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
-
-Durante la instalación:
-1. Selecciona las opciones predeterminadas con la contraseña `admin`.
-2. Asegúrate de que PostgreSQL esté corriendo y que pgAdmin esté instalado.
-
-#### Comprobar la instalación de PostgreSQL
-Para verificar que PostgreSQL está instalado y funcionando, ejecuta:
+### 2. Eliminar datos previos de Docker (si es necesario)
 ```bash
-psql --version
-```
-Si la instalación fue correcta, deberías ver algo como:
-```
-psql (PostgreSQL) 17.x
+docker system prune -a --volumes -f
 ```
 
-### 3. Crear la base de datos
-Ejecuta `psql` y crea la base de datos:
+### 3. Construir e iniciar los contenedores
 ```bash
-psql -U postgres
-```
-Dentro del prompt de `psql`, ejecuta:
-```sql
-CREATE DATABASE guau_miau;
-```
-Sal del prompt con:
-```sql
-\q
+docker-compose up --build -d
 ```
 
-### 4. Instalar Python
-Descarga e instala la última versión de Python desde:
-[https://www.python.org/](https://www.python.org/)
-
-Durante la instalación, asegúrate de marcar la opción **"Add Python to PATH"**.
-
-### 5. Crear y activar un entorno virtual
+### 4. Aplicar migraciones
 ```bash
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
-# o puedes usar:
-.\venv\Scripts\activate
+docker exec guau_miau_api python manage.py migrate
 ```
 
-### 6. Instalar dependencias
+### 5. Inyectar datos ficticios para pruebas
 ```bash
-pip install -r requirements.txt
+docker cp fictionalData.sql guau_miau_db:/fictionalData.sql
+docker exec -it guau_miau_db psql -U postgres -d guau_miau_db -f /fictionalData.sql
 ```
 
-### 7. Aplicar migraciones
+### 6. Reiniciar los contenedores para aplicar los cambios
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+docker-compose restart
 ```
 
-### 8. Inyectar datos ficticios para pruebas
+### 7. Ver logs del backend (opcional)
 ```bash
-psql -U postgres -d guau_miau -f fictionalData.sql
+docker logs -f guau_miau_api
 ```
 
-### 9. Ejecutar el servidor
-```bash
-python manage.py runserver
-```
+### 8. Acceder a la API
+La API estará disponible en: `http://localhost:8080`
 
 ## Endpoints Principales
 | Recurso | Método | Endpoint |
@@ -104,3 +73,4 @@ python manage.py runserver
 
 ---
 Proyecto desarrollado para la gestión eficiente de adopciones de mascotas. 🐶🐱
+
