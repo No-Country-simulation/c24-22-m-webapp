@@ -67,6 +67,17 @@
 
 ---
 
+## 🎨 UI/UX con Figma
+
+El diseño de la interfaz y experiencia de usuario ha sido desarrollado en **Figma**, permitiendo una mejor planificación y validación visual antes de la implementación. 
+
+- **Wireframes**: Creación de bocetos para estructurar la plataforma.
+- **Prototipos Interactivos**: Simulación de la experiencia del usuario.
+- **Pruebas de Usabilidad**: Validación con usuarios para mejorar la accesibilidad y navegación.
+- **Diseño Responsivo**: Adaptado a diferentes tamaños de pantalla.
+
+---
+
 ## 🚀 Instalación y Configuración
 
 ### 📌 Requisitos Previos
@@ -90,87 +101,63 @@ Abrir la terminal en Visual Studio Code o cualquier otro editor con terminal int
 #### 🔧 Configurar el backend
 
 1. Abrir una terminal en Visual Studio Code y acceder a la carpeta del backend:
-   ```bash
+
+```bash
    cd backend
-   ```
+```
+
 2. Instalar PostgreSQL 17 desde [EnterpriseDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
 3. Crear la base de datos ejecutando en la terminal:
-   ```bash
+
+```bash
    psql -U postgres
    CREATE DATABASE guau_miau;
    \q
-   ```
+```
+
 4. Instalar Python y dependencias:
-   ```bash
+
+```bash
    python -m venv venv
    source venv/bin/activate  # En Windows: .\venv\Scripts\activate
    pip install -r requirements.txt
-   ```
+```
+
 5. Aplicar migraciones y cargar datos ficticios:
-   ```bash
+
+```bash
    python manage.py makemigrations
    python manage.py migrate
    psql -U postgres -d guau_miau -f fictionalData.sql
-   ```
+```
+
 6. Ejecutar el servidor:
-   ```bash
+
+```bash
    python manage.py runserver
-   ```
+```
 
 #### 💻 Configurar el frontend
 
 1. Abrir una nueva terminal en Visual Studio Code y acceder a la carpeta del frontend:
-   ```bash
+
+```bash
    cd frontend
-   ```
+```
+
 2. Instalar dependencias ejecutando:
-   ```bash
+
+```bash
    npm install
-   ```
+```
+
 3. Iniciar el servidor de desarrollo:
-   ```bash
+
+```bash
    npm run dev
-   ```
+```
+
 4. Abrir el navegador y visitar: [http://localhost:5173](http://localhost:5173).
-
-### 📂 Estructura del Proyecto
-
-```
-joseorteha-plataform-adoption/
-├── README.md
-├── eslint.config.js
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── vite.config.js
-├── public/
-└── src/
-    ├── App.css
-    ├── App.jsx
-    ├── main.jsx
-    ├── assets/
-    ├── components/
-    │    ├── ErrorBoundary.jsx
-    │    ├── Navbar.jsx
-    │    └── PetCard.jsx
-    ├── hooks/
-    │    └── useAuth.js
-    ├── pages/
-    │    ├── About.jsx
-    │    ├── Adopt.jsx
-    │    ├── Collaborate.jsx
-    │    ├── Home.jsx
-    │    ├── Location.jsx
-    │    ├── Login.jsx
-    │    ├── PetProfile.jsx
-    │    └── SignUp.jsx
-    ├── services/
-    │    └── api.js
-    └── styles/
-        ├── Home.css
-        └── index.css
-```
 
 ---
 
@@ -186,31 +173,34 @@ Este proyecto está bajo la licencia **MIT**.
 
 ---
 
-👥 Equipo
----
+## 👥 Equipo
 
-Nahuel Marcilli - Backend
-GitHub: https://github.com/marili-mn
+Nahuel Marcilli - Backend  
+GitHub: https://github.com/marili-mn  
 LinkedIn: https://www.linkedin.com/in/nahuel-marcilli/
 
-Jose Ortega - Frontend
-GitHub: https://github.com/joseorteha
+Jose Ortega - Frontend  
+GitHub: https://github.com/joseorteha  
 LinkedIn: https://www.linkedin.com/in/jos%C3%A9-ortega-497387321/
 
-Camila - Frontend
-GitHub: https://github.com/C-LedezmaRodriguez
+Camila - Frontend  
+GitHub: https://github.com/C-LedezmaRodriguez  
 LinkedIn: https://www.linkedin.com/in/camila-ledezma-rodriguez/
 
-Florencia Mauna - UI/UX
-GitHub: https://github.com/FlorMauna
+Florencia Mauna - UI/UX  
+GitHub: https://github.com/FlorMauna  
 LinkedIn: https://www.linkedin.com/in/florencia-mauna-2a9524236/
 
-Samanta Ramos Podadera - QA
-GitHub: https://github.com/SamantaRamosPodadera
+Samanta Ramos Podadera - QA  
+GitHub: https://github.com/SamantaRamosPodadera  
 LinkedIn: https://www.linkedin.com/in/samanta-ramos-podadera/
 
+---
 
 🎯 **Gracias por apoyar este proyecto!** 🎯
+
+
+
 
 
 
