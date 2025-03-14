@@ -13,7 +13,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const hamburgerButtonRef = useRef();
 
   const navigation = [
-    { name: 'Adoptar', to: '/adopt', subItems: null },
+    { name: 'Adoptar', to: '/adopt', subItems: null},
     { name: 'Colaborar', to: '/collaborate', subItems:  null},
     { name: 'Quiénes Somos', to: '/about', subItems: null },
     { name: 'Dónde Estamos', to: '/location', subItems: null },

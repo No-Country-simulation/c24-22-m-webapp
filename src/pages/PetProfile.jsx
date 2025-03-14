@@ -1,13 +1,12 @@
 // src/pages/PetProfile.jsx
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Añadimos useNavigate
+import { useParams, useNavigate } from 'react-router-dom'; 
 import { FaHeart, FaPaw, FaUserFriends, FaCat, FaDog, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 function PetProfile() {
   const { id } = useParams();
-  const navigate = useNavigate(); // Para manejar redirecciones
+  const navigate = useNavigate(); 
 
-  // Paleta de colores basada en la imagen proporcionada
   const colors = {
     blue: '#5DADE2',
     yellow: '#F9D057',
@@ -19,32 +18,150 @@ function PetProfile() {
     lightGreen: '#88CC8D',
   };
 
-  const pet = {
-    id,
-    name: 'Melón',
-    species: 'Gato',
-    breed: 'Siamés',
-    age: 2,
-    gender: 'Macho',
-    status: 'Castrado - Vacunado - Tuxedo',
-    description: 'Cariñoso, Juguetón, Curioso, Divertido, Energético y Aventurero.',
-    compatibility: {
-      kids: true,
-      cats: false,
-      dogs: false,
-    },
-    shelter: {
-      name: 'S.O.S. HociCos',
-      description: 'Servicio de rescate de animales',
-      location: 'Mar del Plata, Buenos Aires, Argentina',
-      email: 'soshocicos.mdp@gmail.com',
-    },
-    photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
-  };
 
-  // Función para regresar a la búsqueda
+  const pets = [
+    {
+      id: 1,
+      name: 'Limón',
+      species: 'Gato',
+      breed: 'No especificada',
+      age: 1,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Un gatito juguetón y adorable que busca un hogar.',
+      compatibility: {
+        kids: true,
+        cats: true,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 2,
+      name: 'Melón',
+      species: 'Gato',
+      breed: 'Siamés',
+      age: 2,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado - Tuxedo',
+      description: 'Melón es un gato elegante y curioso.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 3,
+      name: 'Sandía',
+      species: 'Gato',
+      breed: 'Persa',
+      age: 3,
+      gender: 'Hembra',
+      status: 'Castrada - Vacunada',
+      description: 'Sandía es perfecta para un hogar tranquilo.',
+      compatibility: {
+        kids: false,
+        cats: true,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 4,
+      name: 'Canela & Manzana',
+      species: 'Perro',
+      breed: 'Pitbull',
+      age: 2,
+      gender: 'Hembras',
+      status: 'Castradas - Vacunadas',
+      description: 'Dos hermanitos inseparables que buscan un hogar juntos.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 5,
+      name: 'Budin',
+      species: 'Perro',
+      breed: 'Rottweiler',
+      age: 4,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Budin es un perro majestuoso y protector.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 6,
+      name: 'Bufuelo',
+      species: 'Perro',
+      breed: 'Labrador',
+      age: 3,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Bufuelo es un compañero ideal para toda la familia.',
+      compatibility: {
+        kids: true,
+        cats: true,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+  ];
+
+  const pet = pets.find((pet) => pet.id === parseInt(id));
+
+  if (!pet) {
+    return <div>La mascota no fue encontrada</div>;
+  }
+
   const handleBackToSearch = () => {
-    navigate('/search'); // Redirige a la página de búsqueda
+    navigate('/search');
   };
 
   return (
@@ -126,13 +243,13 @@ function PetProfile() {
               </div>
               <div className="space-y-2">
                 <button
-                  onClick={() => navigate(`/adoption-form/${pet.id}`)} // Redirige a AdoptionForm
+                  onClick={() => navigate(`/adoption-form/${pet.id}`)} 
                   className="w-full py-2 px-4 rounded-md text-sm text-white transition-colors bg-blue-500 hover:bg-blue-600"
                 >
                   Sí, quiero adoptar
                 </button>
                 <button
-                  onClick={handleBackToSearch} // Regresa a la búsqueda
+                  onClick={handleBackToSearch} 
                   className="w-full py-2 px-4 rounded-md text-sm text-gray-800 dark:text-gray-200 transition-colors bg-yellow-300 hover:bg-yellow-400"
                 >
                   Aún no, quiero ver más

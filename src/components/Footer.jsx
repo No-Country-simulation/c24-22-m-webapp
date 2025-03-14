@@ -1,13 +1,11 @@
-// src/components/Footer.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+  const [, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
 
   useEffect(() => {
-    // Sincronizar con el modo oscuro global si cambia
     const handleDarkModeChange = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     };

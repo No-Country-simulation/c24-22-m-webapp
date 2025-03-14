@@ -1,4 +1,3 @@
-// src/pages/AdoptionForm.jsx
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
@@ -8,16 +7,143 @@ function AdoptionForm() {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
 
-  // Datos simulados de la mascota
-  const pet = {
-    id,
-    name: 'Melón',
-    species: 'Gato',
-    photos: ['/assets/pet1.jpg'], // Asegúrate de tener esta imagen o usa un placeholder
-  };
+  const pets = [
+    {
+      id: 1,
+      name: 'Limón',
+      species: 'Gato',
+      breed: 'No especificada',
+      age: 1,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Un gatito juguetón y adorable que busca un hogar.',
+      compatibility: {
+        kids: true,
+        cats: true,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 2,
+      name: 'Melón',
+      species: 'Gato',
+      breed: 'Siamés',
+      age: 2,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado - Tuxedo',
+      description: 'Melón es un gato elegante y curioso.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 3,
+      name: 'Sandía',
+      species: 'Gato',
+      breed: 'Persa',
+      age: 3,
+      gender: 'Hembra',
+      status: 'Castrada - Vacunada',
+      description: 'Sandía es perfecta para un hogar tranquilo.',
+      compatibility: {
+        kids: false,
+        cats: true,
+        dogs: false,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 4,
+      name: 'Canela & Manzana',
+      species: 'Perro',
+      breed: 'Pitbull',
+      age: 2,
+      gender: 'Hembras',
+      status: 'Castradas - Vacunadas',
+      description: 'Dos hermanitos inseparables que buscan un hogar juntos.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 5,
+      name: 'Budin',
+      species: 'Perro',
+      breed: 'Rottweiler',
+      age: 4,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Budin es un perro majestuoso y protector.',
+      compatibility: {
+        kids: true,
+        cats: false,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+    {
+      id: 6,
+      name: 'Bufuelo',
+      species: 'Perro',
+      breed: 'Labrador',
+      age: 3,
+      gender: 'Macho',
+      status: 'Castrado - Vacunado',
+      description: 'Bufuelo es un compañero ideal para toda la familia.',
+      compatibility: {
+        kids: true,
+        cats: true,
+        dogs: true,
+      },
+      shelter: {
+        name: 'S.O.S. HociCos',
+        description: 'Servicio de rescate de animales',
+        location: 'Mar del Plata, Buenos Aires, Argentina',
+        email: 'soshocicos.mdp@gmail.com',
+      },
+      photos: ['/assets/pet1.jpg', '/assets/pet2.jpg'],
+    },
+  ];
+  const pet = pets.find(p => p.id === parseInt(id));
 
   const [formData, setFormData] = useState({
-    // Datos Adoptante
     nombreApellido: '',
     numeroContacto: '',
     email: '',
@@ -25,15 +151,13 @@ function AdoptionForm() {
     direccion: '',
     nucleoFamiliar: '',
     tipoVivienda: '',
-    // Datos Mascota
-    nombreMascota: pet.name || '', // Prellenamos con el nombre simulado
+    nombreMascota: pet?.name || '', 
     motivosAdopcion: '',
     experienciaAnimales: '',
     familiaDeAcuerdo: '',
     cuidadoVacaciones: '',
     conoceGastos: '',
     espacioAireLibre: '',
-    // Términos
     aceptaTerminos: false,
   });
 
@@ -47,10 +171,9 @@ function AdoptionForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulamos el envío del formulario
     console.log('Formulario enviado:', formData);
     alert('¡Formulario enviado con éxito! El refugio se pondrá en contacto contigo pronto.');
-    navigate('/'); // Redirigir al inicio
+    navigate('/'); 
   };
 
   const nextStep = () => {
@@ -64,7 +187,7 @@ function AdoptionForm() {
         {/* Título */}
         <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6 text-center">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-            Solicitud de Adopción para {pet.name || 'esta mascota'}
+            Solicitud de Adopción para {pet?.name || 'esta mascota'}
           </h1>
         </div>
 
@@ -104,8 +227,8 @@ function AdoptionForm() {
 
               <div className="w-full md:w-1/3 flex items-center justify-center mt-6 md:mt-0">
                 <img
-                  src={pet.photos[0] || '/assets/placeholder-pet.jpg'}
-                  alt={pet.name || 'Mascota'}
+                  src={pet?.photos[0] || '/assets/placeholder-pet.jpg'}
+                  alt={pet?.name || 'Mascota'}
                   className="w-48 h-48 object-cover rounded-full border-2 border-gray-300"
                 />
               </div>
@@ -194,167 +317,97 @@ function AdoptionForm() {
                       required
                     />
                   </div>
-
-                  <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Núcleo Familiar</label>
-                    <input
-                      type="text"
-                      name="nucleoFamiliar"
-                      value={formData.nucleoFamiliar}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Tipo de vivienda</label>
-                    <input
-                      type="text"
-                      name="tipoVivienda"
-                      value={formData.tipoVivienda}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
-                      required
-                    />
-                  </div>
                 </div>
               </div>
 
               {/* Columna derecha - Datos Mascota */}
               <div>
                 <div className="bg-gray-200 dark:bg-gray-700 rounded-md p-2 text-center mb-4">
-                  <h2 className="font-bold text-gray-800 dark:text-white">Datos Mascota</h2>
+                  <h2 className="font-bold text-gray-800 dark:text-white">Datos de la Mascota</h2>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Nombre de la mascota</label>
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Motivos para adoptar</label>
                     <input
                       type="text"
-                      name="nombreMascota"
-                      value={formData.nombreMascota}
-                      onChange={handleChange}
-                      className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
-                      required
-                      disabled
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Motivos de la adopción</label>
-                    <textarea
                       name="motivosAdopcion"
                       value={formData.motivosAdopcion}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                      rows="3"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">Experiencia con otros animales</label>
-                    <textarea
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">¿Tiene experiencia con animales?</label>
+                    <input
+                      type="text"
                       name="experienciaAnimales"
                       value={formData.experienciaAnimales}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                      rows="3"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">
-                      ¿Están todos los miembros de la familia de acuerdo en adoptar?
-                    </label>
-                    <select
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">¿Su familia está de acuerdo con la adopción?</label>
+                    <input
+                      type="text"
                       name="familiaDeAcuerdo"
                       value={formData.familiaDeAcuerdo}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                    >
-                      <option value="">Selecciona una opción</option>
-                      <option value="Sí">Sí</option>
-                      <option value="No">No</option>
-                    </select>
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">
-                      ¿Pensaste quién cuidará a tu mascota durante las vacaciones?
-                    </label>
-                    <textarea
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">¿Cómo garantizará el cuidado durante las vacaciones?</label>
+                    <input
+                      type="text"
                       name="cuidadoVacaciones"
                       value={formData.cuidadoVacaciones}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                      rows="3"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">
-                      ¿Conoces los gastos y cuidados que implica una mascota?
-                    </label>
-                    <select
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">¿Conoce los gastos asociados con la adopción?</label>
+                    <input
+                      type="text"
                       name="conoceGastos"
                       value={formData.conoceGastos}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                    >
-                      <option value="">Selecciona una opción</option>
-                      <option value="Sí">Sí</option>
-                      <option value="No">No</option>
-                    </select>
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">
-                      ¿Posees algún espacio al aire libre?
-                    </label>
-                    <select
+                    <label className="block text-sm mb-1 text-gray-700 dark:text-gray-300">¿Cuenta con espacio al aire libre para la mascota?</label>
+                    <input
+                      type="text"
                       name="espacioAireLibre"
                       value={formData.espacioAireLibre}
                       onChange={handleChange}
                       className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-white"
                       required
-                    >
-                      <option value="">Selecciona una opción</option>
-                      <option value="Sí">Sí</option>
-                      <option value="No">No</option>
-                    </select>
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Términos y condiciones */}
-            <div className="mb-6 flex items-center">
-              <input
-                type="checkbox"
-                name="aceptaTerminos"
-                checked={formData.aceptaTerminos}
-                onChange={handleChange}
-                className="mr-2 accent-blue-500"
-                required
-              />
-              <label className="text-gray-700 dark:text-gray-300">
-                Acepto el aviso de privacidad y términos y condiciones.
-              </label>
-            </div>
-
-            {/* Botón de enviar */}
-            <div className="text-center">
+            <div className="flex justify-center">
               <button
                 type="submit"
-                className="py-2 px-12 rounded-md text-white bg-yellow-500 hover:bg-yellow-600 transition-colors"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               >
-                Enviar
+                Enviar solicitud
               </button>
             </div>
           </form>

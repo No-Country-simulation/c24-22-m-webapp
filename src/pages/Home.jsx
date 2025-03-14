@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { BsSearch } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import "../styles/Home.css";
-import catPainting from '../assets/cat.jpg';
+import catPainting from '../assets/cat.jpg'; 
 import perro from '../assets/perro.jpg';
 import gato from '../assets/gato.jpg';
 import conejo from '../assets/conejo.jpg';
@@ -18,7 +17,7 @@ function Home() {
     return localStorage.getItem('darkMode') === 'true' || false;
   });
 
-  const navigate = useNavigate(); // Hook para manejar la navegación
+  const navigate = useNavigate(); 
 
   const handleSearchChange = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
@@ -27,7 +26,7 @@ function Home() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const queryParams = new URLSearchParams(search).toString();
-    navigate(`/search?${queryParams}`); // Redirige a /search en lugar de /adopt
+    navigate(`/search?${queryParams}`); 
   };
 
   const toggleDarkMode = () => {
