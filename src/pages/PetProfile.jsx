@@ -1,11 +1,11 @@
-// src/pages/PetProfile.jsx
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; 
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { FaHeart, FaPaw, FaUserFriends, FaCat, FaDog, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 function PetProfile() {
   const { id } = useParams();
-  const navigate = useNavigate(); 
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const colors = {
     blue: '#5DADE2',
@@ -17,7 +17,6 @@ function PetProfile() {
     lightRed: '#EB857A',
     lightGreen: '#88CC8D',
   };
-
 
   const pets = [
     {
@@ -154,40 +153,50 @@ function PetProfile() {
     },
   ];
 
-  const pet = pets.find((pet) => pet.id === parseInt(id));
+  // Obtener los datos del state si existen (desde Adopt), o buscar en el arreglo pets (desde SearchResults)
+  const petFromState = location.state?.pet;
+  const petFromArray = pets.find((pet) => pet.id === parseInt(id));
+  const pet = petFromState || petFromArray;
 
   if (!pet) {
-    return <div>La mascota no fue encontrada</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 px-4 py-8 text-center">
+        <div>La mascota no fue encontrada</div>
+        <button
+          onClick={() => navigate('/adopt')}
+          className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Volver a Adoptar
+        </button>
+      </div>
+    );
   }
 
   const handleBackToSearch = () => {
-    navigate('/search');
+    // Determinar a dónde regresar según de dónde vino
+    const previousPath = location.state?.from || '/search';
+    navigate(previousPath);
   };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-16 px-4 py-8 animate-fade-in">
       <div className="max-w-4xl mx-auto">
-        {/* Contenedor principal de dos columnas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Columna izquierda - Información del perfil */}
           <div className="md:col-span-2">
-            {/* Tarjeta de perfil */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
-              {/* Cabecera con imagen y nombre */}
               <div className="flex flex-col items-center border-b border-gray-200 dark:border-gray-700 pb-4 mb-4">
                 <img
-                  src={pet.photos[0] || '/assets/placeholder-pet.jpg'}
+                  src={pet.photos ? pet.photos[0] : `/api/placeholder/400/300?text=${pet.name}` || '/assets/placeholder-pet.jpg'}
                   alt={pet.name}
                   className="w-24 h-24 object-cover rounded-full bg-gray-200 mb-2 border-2 border-yellow-500"
                 />
                 <h1 className="text-xl font-bold text-gray-800 dark:text-white">{pet.name}</h1>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {pet.gender} - {pet.age} años
+                  {pet.gender || pet.species} - {pet.age} {pet.age === 1 ? "año" : "años"}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{pet.status}</p>
+                {pet.status && <p className="text-sm text-gray-600 dark:text-gray-300">{pet.status}</p>}
               </div>
 
-              {/* Características */}
               <div className="mb-6">
                 <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2 flex items-center gap-2">
                   <FaPaw /> Descripción
@@ -198,30 +207,66 @@ function PetProfile() {
                 </h3>
                 <ul className="list-none space-y-2">
                   <li className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <FaUserFriends /> {pet.compatibility.kids ? 'Se lleva bien con niños' : 'No se lleva bien con niños'}
+                    <FaUserFriends />
+                    {pet.compatibility?.kids !== undefined
+                      ? pet.compatibility.kids
+                        ? 'Se lleva bien con niños'
+                        : 'No se lleva bien con niños'
+                      : pet.kidsCompatibility === 'Sí'
+                      ? 'Se lleva bien con niños'
+                      : 'No se lleva bien con niños'}
                   </li>
                   <li className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                    <FaCat /> {pet.compatibility.cats ? 'Se lleva bien con otros gatos' : 'No se lleva bien con otros gatos'}
+                    <FaCat />
+                    {pet.compatibility?.cats !== undefined
+                      ? pet.compatibility.cats
+                        ? 'Se lleva bien con otros gatos'
+                        : 'No se lleva bien con otros gatos'
+                      : pet.petsCompatibility === 'Sí'
+                      ? 'Se lleva bien con otros gatos'
+                      : 'No se lleva bien con otros gatos'}
                   </li>
                   <li className="flex items-center gap-2 text-red-600 dark:text-red-400">
-                    <FaDog /> {pet.compatibility.dogs ? 'Se lleva bien con perros' : 'No se lleva bien con perros'}
+                    <FaDog />
+                    {pet.compatibility?.dogs !== undefined
+                      ? pet.compatibility.dogs
+                        ? 'Se lleva bien con perros'
+                        : 'No se lleva bien con perros'
+                      : pet.petsCompatibility === 'Sí'
+                      ? 'Se lleva bien con perros'
+                      : 'No se lleva bien con perros'}
                   </li>
                 </ul>
               </div>
 
-              {/* Galería de fotos */}
               <div className="grid grid-cols-3 gap-2">
-                {pet.photos.map((photo, index) => (
+                {pet.photos ? (
+                  pet.photos.map((photo, index) => (
+                    <img
+                      key={index}
+                      src={photo || '/assets/placeholder-pet.jpg'}
+                      alt={`${pet.name} photo ${index + 1}`}
+                      className="w-full h-24 object-cover rounded-lg bg-gray-200"
+                    />
+                  ))
+                ) : (
                   <img
-                    key={index}
-                    src={photo || '/assets/placeholder-pet.jpg'}
-                    alt={`${pet.name} photo ${index + 1}`}
+                    src={`/api/placeholder/400/300?text=${pet.name}`}
+                    alt={`${pet.name} photo 1`}
                     className="w-full h-24 object-cover rounded-lg bg-gray-200"
                   />
-                ))}
-                {[...Array(6 - pet.photos.length)].map((_, index) => (
+                )}
+                {pet.photos && [...Array(6 - pet.photos.length)].map((_, index) => (
                   <div
                     key={index + pet.photos.length}
+                    className="w-full h-24 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400"
+                  >
+                    Placeholder
+                  </div>
+                ))}
+                {!pet.photos && [...Array(5)].map((_, index) => (
+                  <div
+                    key={index + 1}
                     className="w-full h-24 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400"
                   >
                     Placeholder
@@ -231,9 +276,7 @@ function PetProfile() {
             </div>
           </div>
 
-          {/* Columna derecha - Adopción y refugio */}
           <div className="md:col-span-1">
-            {/* Tarjeta de adopción */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4">
               <div className="text-center mb-4">
                 <p className="font-medium text-gray-800 dark:text-white mb-2">
@@ -243,13 +286,13 @@ function PetProfile() {
               </div>
               <div className="space-y-2">
                 <button
-                  onClick={() => navigate(`/adoption-form/${pet.id}`)} 
+                  onClick={() => navigate(`/adoption-form/${pet.id}`)}
                   className="w-full py-2 px-4 rounded-md text-sm text-white transition-colors bg-blue-500 hover:bg-blue-600"
                 >
                   Sí, quiero adoptar
                 </button>
                 <button
-                  onClick={handleBackToSearch} 
+                  onClick={handleBackToSearch}
                   className="w-full py-2 px-4 rounded-md text-sm text-gray-800 dark:text-gray-200 transition-colors bg-yellow-300 hover:bg-yellow-400"
                 >
                   Aún no, quiero ver más
@@ -257,25 +300,24 @@ function PetProfile() {
               </div>
             </div>
 
-            {/* Tarjeta del refugio */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
               <div className="flex flex-col items-center mb-4">
                 <div className="w-16 h-16 rounded-full bg-gray-200 mb-2"></div>
-                <h2 className="font-bold text-lg text-gray-800 dark:text-white">{pet.shelter.name}</h2>
-                <p className="text-xs text-gray-600 dark:text-gray-300">{pet.shelter.description}</p>
+                <h2 className="font-bold text-lg text-gray-800 dark:text-white">{pet.shelter?.name || 'S.O.S. HociCos'}</h2>
+                <p className="text-xs text-gray-600 dark:text-gray-300">{pet.shelter?.description || 'Servicio de rescate de animales'}</p>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex items-start">
                   <FaMapMarkerAlt className="mt-1 mr-2 flex-shrink-0 text-red-500 dark:text-red-400" />
-                  <span className="text-gray-700 dark:text-gray-300">{pet.shelter.location}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{pet.shelter?.location || pet.location || 'Mar del Plata, Buenos Aires, Argentina'}</span>
                 </div>
                 <div className="flex items-center">
                   <FaEnvelope className="mr-2 flex-shrink-0 text-blue-500 dark:text-blue-400" />
-                  <span className="text-gray-700 dark:text-gray-300 text-xs">{pet.shelter.email}</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-xs">{pet.shelter?.email || 'soshocicos.mdp@gmail.com'}</span>
                 </div>
               </div>
               <button
-                onClick={() => navigate('/collaborate')} // Redirige a Collaborate
+                onClick={() => navigate('/collaborate')}
                 className="w-full py-2 px-4 rounded-md text-sm mt-4 text-white bg-green-500 hover:bg-green-600 transition-colors"
               >
                 Quiero ayudar
