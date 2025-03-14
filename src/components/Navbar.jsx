@@ -1,23 +1,47 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsChevronDown, BsSun, BsMoon } from "react-icons/bs";
 import PropTypes from 'prop-types';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../firebase'; // Ajusta la ruta según tu estructura
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubMenu, setOpenMobileSubMenu] = useState(null);
   const [localDarkMode, setIsLocalDarkMode] = useState(isDarkMode || localStorage.getItem('darkMode') === 'true');
+  const [user, setUser] = useState(null); // Estado para el usuario autenticado
   const location = useLocation();
+  const navigate = useNavigate();
   const mobileMenuRef = useRef();
   const hamburgerButtonRef = useRef();
 
   const navigation = [
-    { name: 'Adoptar', to: '/adopt', subItems: null},
-    { name: 'Colaborar', to: '/collaborate', subItems:  null},
+    { name: 'Adoptar', to: '/adopt', subItems: null },
+    { name: 'Colaborar', to: '/collaborate', subItems: null },
     { name: 'Quiénes Somos', to: '/about', subItems: null },
     { name: 'Dónde Estamos', to: '/location', subItems: null },
   ];
+
+  // Detectar el estado de autenticación
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log('Estado de autenticación:', currentUser ? 'Usuario autenticado' : 'No autenticado');
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Manejar el cierre de sesión
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login'); // Redirigir al login después de cerrar sesión
+      setIsMobileMenuOpen(false); // Cerrar el menú móvil si está abierto
+    } catch (err) {
+      console.error('Error al cerrar sesión:', err);
+    }
+  };
 
   const handleToggleDarkMode = () => {
     if (typeof toggleDarkMode === 'function') {
@@ -41,10 +65,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && 
-          mobileMenuRef.current && 
-          hamburgerButtonRef.current &&
-          !mobileMenuRef.current.contains(event.target)) {
+      if (
+        isMobileMenuOpen && 
+        mobileMenuRef.current && 
+        hamburgerButtonRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
         setIsMobileMenuOpen(false);
         setOpenMobileSubMenu(null);
       }
@@ -128,12 +154,48 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               )}
             </button>
 
-            <Link
-              to={location.pathname === "/login" ? "/signup" : "/login"}
-              className="inline-flex items-center px-4 py-2 bg-[#9acd32] text-white rounded-full hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-lg dark:bg-blue-600 dark:hover:bg-blue-700"
-            >
-              {location.pathname === "/login" ? "Sign Up" : "Sign In"}
-            </Link>
+            {/* Mostrar opciones según el estado de autenticación (Escritorio) */}
+            {user ? (
+              <div className="relative">
+                <button
+                  onMouseEnter={() => setOpenSubMenu('profile')}
+                  onMouseLeave={() => setOpenSubMenu(null)}
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300"
+                >
+                  {user.displayName || 'Perfil'}
+                  <BsChevronDown className="ml-1 h-4 w-4 transition-transform duration-300" />
+                </button>
+                {openSubMenu === 'profile' && (
+                  <div
+                    className="absolute pt-2 animate-slide-down right-0"
+                    onMouseEnter={() => setOpenSubMenu('profile')}
+                    onMouseLeave={() => setOpenSubMenu(null)}
+                  >
+                    <div className="bg-[#9acd32] dark:bg-gray-800 rounded-lg shadow-lg py-2 min-w-[150px] transition-all duration-300">
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-white dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-gray-700 transition-all duration-300"
+                      >
+                        Mi Perfil
+                      </Link>
+                      <button
+                        onClick={handleSignOut}
+                        className="block w-full text-left px-4 py-2 text-sm text-white dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-gray-700 transition-all duration-300"
+                      >
+                        Cerrar Sesión
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                to={location.pathname === "/login" ? "/signup" : "/login"}
+                className="inline-flex items-center px-4 py-2 bg-[#9acd32] text-white rounded-full hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-lg dark:bg-blue-600 dark:hover:bg-blue-700"
+              >
+                {location.pathname === "/login" ? "Sign Up" : "Sign In"}
+              </Link>
+            )}
           </div>
 
           {/* Botón del menú hamburguesa para móvil */}
@@ -224,14 +286,33 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 )}
                 {localDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
               </button>
-              
-              <Link
-                to={location.pathname === "/login" ? "/signup" : "/login"}
-                className="block mt-2 w-full px-4 py-2 text-center bg-[#9acd32] text-white rounded-full hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-lg dark:bg-blue-600 dark:hover:bg-blue-700"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {location.pathname === "/login" ? "Sign Up" : "Sign In"}
-              </Link>
+
+              {/* Mostrar opciones según el estado de autenticación (Móvil) */}
+              {user ? (
+                <>
+                  <Link
+                    to="/profile"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Mi Perfil
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to={location.pathname === "/login" ? "/signup" : "/login"}
+                  className="block mt-2 w-full px-4 py-2 text-center bg-[#9acd32] text-white rounded-full hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-lg dark:bg-blue-600 dark:hover:bg-blue-700"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {location.pathname === "/login" ? "Sign Up" : "Sign In"}
+                </Link>
+              )}
             </div>
           </div>
         </div>
