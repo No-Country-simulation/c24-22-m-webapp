@@ -203,7 +203,7 @@ LinkedIn: https://www.linkedin.com/in/camila-ledezma-rodriguez/
 
 Florencia Mauna - UI/UX
 GitHub: https://github.com/FlorMauna
-LinkedIn: https://www.linkedin.com/in/florencia-mauna/
+LinkedIn: https://www.linkedin.com/in/florencia-mauna-2a9524236/
 
 Samanta Ramos Podadera - QA
 GitHub: https://github.com/SamantaRamosPodadera
